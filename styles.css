@@ -52,3 +52,20 @@ body {
     width: 2rem;
     height: 2rem;
 }
+
+#lower-right-text {
+    margin-top: 300px;
+    margin-left: 80%;
+}
+
+#colors-text1 {
+    color: yellow;
+    background-color: black;
+    text-align: center;
+}
+
+#colors-text2 {
+    color:purple;
+    background-color: yellow;
+    text-align: center;
+}
