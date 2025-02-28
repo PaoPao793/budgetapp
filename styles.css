@@ -1,0 +1,54 @@
+.device {
+    margin: auto;
+    /* width: 640px; */
+    width: 550px;
+    height: 960px;
+    overflow: hidden;
+    background-color: powderblue;
+    position: relative;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+}
+
+.content {
+    background-color: rgb(255, 204, 129);
+    padding-bottom: 3rem;  /* so content doesn't overlap navbar */
+    overflow-y: auto;
+    height: calc(100vh - 4rem); /* so scrollbar only applies to main content div */
+}
+
+.navbar {
+    font-family: Arial, Helvetica, sans-serif;
+    position: fixed;  /* so navbar is always visible */
+    bottom: 0;
+    background-color: rgb(229, 229, 229);
+    /*width: 640px;  /* from starting code specification */
+    width: 550px;
+    height: 4rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.navbar a {
+    color: black;
+    text-decoration: none;
+    display: flex;
+    width: 100%;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navbar a.active {
+    background-color: rgb(134, 201, 240);
+    color: black;
+}
+
+.nav-icon {
+    margin-top: .5rem;
+    width: 2rem;
+    height: 2rem;
+}
