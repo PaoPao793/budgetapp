@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>Choices</title>
+        <link rel="stylesheet" href="../styles.css">
+        <script src="../scripts/choices.js" defer></script>
+    </head>
+    <body>
+
+
+        <div class="device">
+            <div class="content">
+                <h1>-Choices Screen-</h1>
+                
+                <h2>Radio Button Option</h2>
+                <label><input type="radio" name="radioOption" value="Option 1" checked> Option 1</label><br>
+                <label><input type="radio" name="radioOption" value="Option 2"> Option 2</label><br>
+                <label><input type="radio" name="radioOption" value="Option 3"> Option 3</label><br>
+
+                <!-- Drop-down List Entry -->
+                <h2>Drop-down List Option</h2>
+                <select id="dropdownOption">
+                    <option value="Choice A">Choice A</option>
+                    <option value="Choice B">Choice B</option>
+                    <option value="Choice C">Choice C</option>
+                </select>
+
+                <!-- Traditional Button -->
+                <br><br>
+                <button onclick="displayChoices()">Display Selected Choices</button>
+
+                <!-- Output Display -->
+                <p id="output"></p>
+                
+            </div>
+    
+            <div class="navbar">
+                <a href="text.html">
+                    <img src="../icons/text-format.png" class="nav-icon">
+                    Text
+                </a>
+                <a href="lr.html">
+                    <img src="../icons/turn-right.png" class="nav-icon">
+                    LR
+                </a>
+                <a href="colors.html">
+                    <img src="../icons/art.png" class="nav-icon">
+                    Colors
+                </a>
+                <a href="profile.html">
+                    <img src="../icons/user.png" class="nav-icon">
+                    Profile
+                </a>
+                <a href="choices.html"  class="active">
+                    <img src="../icons/choose.png" class="nav-icon">
+                    Choices
+                </a>
+                <a href="todo.html">
+                    <img src="../icons/clipboard.png" class="nav-icon">
+                    ToDo
+                </a>
+            </div>
+        </div>
+    </body>
+</html>
