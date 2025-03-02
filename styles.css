@@ -156,3 +156,7 @@ body {
     justify-content: space-between;
     width: 100%;
 }
+
+#listItem.completed {
+    background-color: lightgray;
+}

@@ -11,24 +11,21 @@
             <div class="content">
                 <h1>-Choices Screen-</h1>
                 
-                <h2>Radio Button Option</h2>
-                <label><input type="radio" name="radioOption" value="Option 1" checked> Option 1</label><br>
-                <label><input type="radio" name="radioOption" value="Option 2"> Option 2</label><br>
-                <label><input type="radio" name="radioOption" value="Option 3"> Option 3</label><br>
+                <h2>Q1: How much financial knowledge do you have?</h2>
+                <label><input type="radio" name="radioOption" value="None" checked>None</label><br>
+                <label><input type="radio" name="radioOption" value="Some">Some</label><br>
+                <label><input type="radio" name="radioOption" value="Expert">Expert</label><br>
 
-                <!-- Drop-down List Entry -->
-                <h2>Drop-down List Option</h2>
+                <h2>Which do you want to do?</h2>
                 <select id="dropdownOption">
-                    <option value="Choice A">Choice A</option>
-                    <option value="Choice B">Choice B</option>
-                    <option value="Choice C">Choice C</option>
+                    <option value="Save money">Save money</option>
+                    <option value="Learn financial tips">Learn financial tips</option>
+                    <option value="Budget better">Budget better</option>
                 </select>
 
-                <!-- Traditional Button -->
                 <br><br>
                 <button onclick="displayChoices()">Display Selected Choices</button>
 
-                <!-- Output Display -->
                 <p id="output"></p>
                 
             </div>

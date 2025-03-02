@@ -24,5 +24,7 @@ function deleteTodo(button) {
 
 function toggleComplete(checkbox) {
     const todoText = checkbox.nextElementSibling;
+    const listItem = checkbox.closest("#listItem");
     todoText.classList.toggle('completed', checkbox.checked);   
+    listItem.classList.toggle('completed', checkbox.checked);
 }
