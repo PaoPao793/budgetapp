@@ -1,14 +1,47 @@
 <html>
     <head>
         <title>Home</title>
+        <script src="../scripts/account.js" defer></script>
         <link rel="stylesheet" href="../prototype_styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     </head>
     <body>
 
 
         <div class="device">
             <div class="content">
-                <h1>-Account Screen-</h1>
+                <div id="profile_container">
+                    <img src="../images/man.jpg" id="profile_photo">
+                    <h2>John Doe</h2>
+                    <p><em>A goal I'm working towards:</em> saving up for vacation</p>
+                </div>
+                
+                <div id="assets_container">
+                    <h2>Total Assets</h2>
+                    <div class="asset-line cash">
+                        <span>Cash: </span>
+                        <span class="amount">$5,000</span>
+                    </div>
+                    <div class="asset-line savings">
+                        <span>Savings: </span>
+                        <span class="amount">$10,000</span>
+                    </div>
+                </div>
+
+                <div id="linked_accts_container">
+                    <h2>Linked Accounts</h2>
+                    <button id="addAcctBtn">+</button>
+                    <div id="accounts_list">
+                        <!-- Linked accounts will appear here -->
+                    </div>
+                </div>
+
+                <div class="button-container">
+                    <button id="logoutBtn">Logout</button>
+                    <button id="helpBtn">Help</button>
+                </div>
             </div>
     
             <div class="navbar">
