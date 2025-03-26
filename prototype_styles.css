@@ -333,6 +333,132 @@ body {
     margin: 8px 0;
 }
 
+/* Home Page Styles */
+.heading-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.heading-container img {
+    width: 100%;
+    height: auto;
+}
+
+.heading-container button {
+    border: none;
+    border-radius: 25px;
+    width: 50px;
+    height: 50px;
+}
+
+#notif_button {
+    background-color: #96c6e5;
+}
+
+#notif_button:hover {
+    background-color: #bfd1e1;
+}
+
+.checking {
+    border-radius: 25px;
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 15px;
+    background-color: #dce5f8;
+}
+
+.quickactions {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+.quickactions img {
+    width: 50%;
+    height: auto;
+}
+
+.quickactions button {
+    width: 75px;
+    height: 75px;
+    border: 3px solid grey;
+    border-radius: 25px;
+    margin: auto;
+}
+
+.quickactions button:hover {
+    background-color: #bfd1e1;
+}
+
+.overview {
+    border-radius: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 15px;
+    height: 425px;
+    overflow-y: auto;
+    background-color: #dce5f8;
+}
+
+.filter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter button {
+    background-color: #ecd4ed;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+    width: 75px;
+}
+
+.filter button:hover {
+    background-color: #ecdeec;
+}
+
+.overview ul {
+    border-radius: 25px;
+    background-color: white;
+    padding: 20px;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 30px;
+}
+
+.overview img {
+    width: 50px;
+    height: 50px;
+}
+
+#grocery {
+    margin-right: 155px;
+}
+
+#gas {
+    margin-right: 200px;
+}
+
+#paycheck {
+    margin-right: 140px;
+}
+
+.transaction-price {
+    text-align: right;
+    padding-right: 10px;
+}
+
+
 
 /* Goals specific */
 #goals_container {
