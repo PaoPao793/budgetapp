@@ -1,0 +1,334 @@
+.device {
+    margin: auto;
+    /* width: 640px; */
+    width: 550px;
+    height: 960px;
+    overflow: hidden;
+    background-color: powderblue;
+    position: relative;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 10px;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    font-family: "Work Sans", sans-serif;
+
+}
+
+.content {
+    background-color: rgb(235, 243, 245);
+    padding-bottom: 3rem;  /* so content doesn't overlap navbar */
+    overflow-y: auto;
+    height: calc(100vh - 4rem); /* so scrollbar only applies to main content div */
+}
+
+.navbar {
+    font-family: Arial, Helvetica, sans-serif;
+    position: fixed;  /* so navbar is always visible */
+    bottom: 0;
+    background-color: rgb(198, 198, 198);
+    /*width: 640px;  /* from starting code specification */
+    width: 550px;
+    height: 4rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.navbar a {
+    color: black;
+    text-decoration: none;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navbar a.active {
+    background-color: rgb(134, 201, 240);
+    color: black;
+}
+
+.nav-icon {
+    margin-top: 1rem;
+    width: 2rem;
+    height: 2rem;
+}
+
+#lower-right-text {
+    margin-top: 300px;
+    margin-left: 80%;
+}
+
+#colors-text1 {
+    color: yellow;
+    background-color: black;
+    text-align: center;
+}
+
+#colors-text2 {
+    color:purple;
+    background-color: yellow;
+    text-align: center;
+}
+
+/* style for profile tab specific */
+.profile-container {
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile-image {
+    width:200px;
+    height:240px;
+    cursor:pointer;
+}
+
+.profile-name {
+    font-weight: bold;
+    font-size: 2em;
+}
+
+#notification {
+    position:fixed; 
+    top:50%; 
+    left:50%; 
+    transform:translate(-50%, -50%); 
+    width: 50%;
+    background:red; 
+    padding: 1em; 
+    border:1px solid black; 
+    z-index:10;
+    text-align: center;
+}
+
+#notif-text {
+    color: white;
+    font-size: 2em;
+}
+
+.hidden {
+    display:none; 
+}
+
+/* todo tab specific */
+.todo-input {
+    width: calc(100% - 60px);
+    padding: 8px;
+    margin-right: 5px;
+}
+
+.todo-button {
+    padding: 8px 10px;
+}
+
+.todo-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.todo-item {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+}
+
+.todo-text.completed {
+    text-decoration: line-through;
+    color: #888;
+}
+
+
+.delete-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+#listItem {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#listItem.completed {
+    background-color: lightgray;
+}
+
+
+/* styles for account screen */
+#profile_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#profile_photo {
+    margin-top: 2rem;
+    width: 8rem; /* Set width */
+    height: 8rem; /* Set height */
+    object-fit: cover; /* Ensures the image fills the area */
+    border-radius: 50%; /* Makes it a circle */
+    border: 3px solid gray; /* Optional border */
+}
+
+#assets_container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#assets_container h2 {
+    text-align: center;
+    font-size: 18px;
+    color: #000000;
+}
+
+.asset-line {
+    padding: 8px;
+    margin: 2px;
+    border-radius: 15px;
+    font-size: 18px;
+    text-align: center;
+    width: 50%;
+}
+
+.cash {
+    background-color: #cce5ff; /* Light blue */
+}
+
+.savings {
+    background-color: #ecd4ed; /* Light purple */
+}
+
+.amount {
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+#linked_accts_container {
+    margin-left: 5rem;
+    margin-top: 1rem;
+}
+
+#linked_accts_container h2 {
+    font-size: 18px;
+    color: #000000;
+    display: inline;
+}
+
+#addAcctBtn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+.button-container {
+    width: 50%;
+    margin-top: 3rem;
+    margin-left: 12rem;
+}
+
+.button-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 4px;
+}
+
+#logoutBtn {
+    background-color: #96c6e5;
+    color: black;
+}
+
+#logoutBtn:hover {
+    background-color: #bfd1e1;
+}
+
+#helpBtn {
+    background-color: #9c6fc3;
+    color: black;
+}
+
+#helpBtn:hover {
+    background-color: #cdbbdc;
+}
+
+
+/* analytics page styling */
+#analytics_container {
+    padding: 20px;
+    font-family: 'Nunito', sans-serif;
+}
+
+#analytics_container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+#graph_img {
+    display: block;
+    margin: 0 auto;
+    max-width: 60%;
+}
+
+.analytics-section {
+    background-color: #dce5f8;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.analytics-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+}
+
+.analytics-header h4 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.analytics-header button {
+    background-color: #2196F3;
+    color: white;
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.analytics-header button:hover {
+    background-color: #1976D2;
+}
+
+.analytics-section ul {
+    padding-left: 20px;
+}
+
+.analytics-section li {
+    font-size: 16px;
+    margin: 8px 0;
+}
