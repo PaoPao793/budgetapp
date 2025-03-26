@@ -1,0 +1,159 @@
+<html>
+    <head>
+        <title>Finances</title>
+        <link rel="stylesheet" href="../prototype_styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+    </head>
+    <body>
+
+
+        <div class="device">
+            <div class="content">
+                <button id="backHomeButton" onclick="location.href='index.html'">&larr;</button>
+    
+                <div id="analytics_container">
+                    <h2>Expenses</h2>
+
+                    <div class="view-toggle">
+                        <button id="toggleViewBtn">Week / Month</button>
+                    </div>
+                    
+    
+                    <div class="donut-chart-wrapper">
+                        <!-- Spent Donut -->
+                        <div class="donut-chart">
+                            <svg viewBox="0 0 36 36" class="circular-chart">
+                                <circle class="circle-bg" cx="18" cy="18" r="15.9155" />
+                                <!-- Food -->
+                                <circle class="circle-segment food" cx="18" cy="18" r="15.9155"
+                                        stroke-dasharray="40, 60" stroke-dashoffset="0" />
+                                <!-- House -->
+                                <circle class="circle-segment house" cx="18" cy="18" r="15.9155"
+                                        stroke-dasharray="30, 70" stroke-dashoffset="-40" />
+                                <!-- Fun -->
+                                <circle class="circle-segment fun" cx="18" cy="18" r="15.9155"
+                                        stroke-dasharray="30, 70" stroke-dashoffset="-70" />
+                                <text x="18" y="20.35" class="center-text">$500</text>
+                            </svg>
+                            <p class="chart-label">Spent</p>
+                        </div>
+                    
+                        <!-- Saved Donut -->
+                        <div class="donut-chart">
+                            <svg viewBox="0 0 36 36" class="circular-chart">
+                                <circle class="circle-bg" cx="18" cy="18" r="15.9155" />
+                                <!-- Savings part -->
+                                <circle class="circle-segment saved" cx="18" cy="18" r="15.9155" stroke-dasharray="60, 40" stroke-dashoffset="0" />
+                                <circle class="circle-segment savings-bg" cx="18" cy="18" r="15.9155" stroke-dasharray="40, 60" stroke-dashoffset="-60" />
+                                <text x="18" y="20.35" class="center-text">$300</text>
+                            </svg>
+                            <p class="chart-label">Saved</p>
+                        </div>
+                    </div>
+                    
+    
+
+
+                    <div class="analytics-section">
+                        <h4>Categories:</h4>
+                        <div class="goal-card">🍔 Food - $200</div>
+                        <div class="goal-card">🏠 House - $150</div>
+                        <div class="goal-card">🎉 Fun - $150</div>
+                    </div>
+    
+                    <div style="display: flex; justify-content: space-around; margin-top: 1rem;">
+                        <button id="addExpenseBtn">Add Expense</button>
+                        <button id="addDepositBtn">Add Deposit</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Expense Modal -->
+            <div id="expenseModal" class="modal hidden">
+                <div class="modal-content">
+                    <span class="close" id="closeExpenseModal">&times;</span>
+                    <h3>Add Expense</h3>
+                    <form id="expenseForm">
+                        <label>Date:</label>
+                        <input type="date" required>
+    
+                        <label>Name:</label>
+                        <input type="text" required>
+    
+                        <label>Category:</label>
+                        <input type="text" required>
+    
+                        <label>Amount:</label>
+                        <input type="number" required>
+    
+                        <label>Frequency:</label>
+                        <select>
+                            <option>Once</option>
+                            <option>Weekly</option>
+                            <option>Monthly</option>
+                        </select>
+    
+                        <button type="submit">Add</button>
+                    </form>
+                </div>
+            </div>
+    
+            <!-- Deposit Modal -->
+            <div id="depositModal" class="modal hidden">
+                <div class="modal-content">
+                    <span class="close" id="closeDepositModal">&times;</span>
+                    <h3>Add Deposit</h3>
+                    <form id="depositForm">
+                        <label>Date:</label>
+                        <input type="date" required>
+    
+                        <label>Name:</label>
+                        <input type="text" required>
+    
+                        <label>Amount:</label>
+                        <input type="number" required>
+    
+                        <label>Save towards:</label>
+                        <input type="text">
+    
+                        <label>Frequency:</label>
+                        <select>
+                            <option>Once</option>
+                            <option>Weekly</option>
+                            <option>Monthly</option>
+                        </select>
+    
+                        <button type="submit">Add</button>
+                    </form>
+                </div>
+            </div>
+
+
+
+
+    
+            <div class="navbar">
+                <a href="index.html" >
+                    <img src="../icons/home.png" class="nav-icon">
+                </a>
+                <a href="expenses.html" class="active">
+                    <img src="../icons/money.png" class="nav-icon">
+                </a>    
+                <a href="goals.html">
+                    <img src="../icons/goal.png" class="nav-icon">
+                </a>
+                <a href="analytics.html">
+                    <img src="../icons/data-analytics.png" class="nav-icon">
+                </a>
+                <a href="account.html">
+                    <img src="../icons/user.png" class="nav-icon">
+                </a>
+            </div>
+        </div>
+
+        <script src="../prototype_scripts/expenses.js"></script>
+    </body>
+</html>

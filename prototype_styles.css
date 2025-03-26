@@ -332,3 +332,259 @@ body {
     font-size: 16px;
     margin: 8px 0;
 }
+
+
+/* Goals specific */
+#goals_container {
+    padding: 20px;
+    font-family: 'Nunito', sans-serif;
+}
+
+#goals_container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+.goal-card {
+    background-color: white;
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#addGoalBtn {
+    display: block;
+    margin: 1rem auto 0 auto;
+    background-color: #6ee7b7;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    font-size: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#addGoalBtn:hover {
+    background-color: #4dcf9b;
+}
+
+#addCategoryBtn {
+    display: block;
+    margin: 1rem auto 0 auto;
+    background-color: #6ee7b7;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    font-size: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#addCategoryBtn:hover {
+    background-color: #4dcf9b;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #f9f9f9;
+    padding: 20px;
+    width: 85%;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    position: relative;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.modal-content label {
+    display: block;
+    margin: 12px 0 4px;
+}
+
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.modal-content button[type="submit"] {
+    margin-top: 16px;
+    background-color: #6ee7b7;
+    color: black;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.modal-content button[type="submit"]:hover {
+    background-color: #4dcf9b;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Hides modal */
+.hidden {
+    display: none;
+}
+
+#backHomeButton {
+    background-color: transparent;
+    color: #333;
+    font-size: 30px;
+    font-weight: bold;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s ease;
+}
+
+#backHomeButton:hover {
+    color: #007acc;
+    text-decoration: underline;
+}
+
+/* expenses page */
+#addExpenseBtn, #addDepositBtn {
+    background-color: #6ee7b7;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 45%;
+}
+
+#addExpenseBtn:hover, #addDepositBtn:hover {
+    background-color: #4dcf9b;
+}
+
+.donut-chart-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 2rem 0;
+}
+
+.donut-chart {
+    text-align: center;
+}
+
+.circular-chart {
+    width: 100px;
+    height: 100px;
+    
+}
+
+.circle-bg {
+    fill: none;
+    stroke: #eee;
+    stroke-width: 2.8;
+}
+
+.circle-segment {
+    fill: none;
+    stroke-width: 5;
+    stroke-linecap: round;
+}
+
+.food {
+    stroke: #f87171; /* red */
+}
+
+.house {
+    stroke: #60a5fa; /* blue */
+}
+
+.fun {
+    stroke: #fbbf24; /* yellow */
+}
+
+.saved {
+    stroke: #6ee7b7; /* mint green */
+}
+
+.center-text {
+    fill: #333;
+    font-size: 7px;
+    font-weight: bold;
+    text-anchor: middle;
+    dominant-baseline: middle;
+ 
+}
+
+.chart-label {
+    margin-top: 0.5rem;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+
+.savings-bg {
+    stroke: pink; /* light gray for contrast */
+}
+
+
+.view-toggle {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+#toggleViewBtn {
+    background-color: #93c5fd;
+    color: black;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#toggleViewBtn:hover {
+    background-color: #60a5fa;
+}
+
+

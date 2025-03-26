@@ -1,21 +1,87 @@
 <html>
     <head>
-        <title>Home</title>
+        <title>Goals</title>
         <link rel="stylesheet" href="../prototype_styles.css">
+        <link rel="stylesheet" href="../prototype_styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+       
     </head>
     <body>
-
-
         <div class="device">
             <div class="content">
-                <h1>-Goals Screen-</h1>
+                <button id="backHomeButton" onclick="location.href='index.html'">&larr;</button>
+
+
+                <div id="analytics_container">
+
+                    <h2>Goals</h2>
+
+                    <div class="analytics-section">
+                        <div class="analytics-header">
+                            <h4>Overview</h4>
+                            <button>Edit</button>
+                        </div>
+                        <p>Weekly Budget: $200</p>
+                        <p>Weekly Saving: $100</p>
+
+                        <button id="addCategoryBtn">+</button>
+                    </div>
+
+                    <div class="analytics-section">
+                        <div class="analytics-header">
+                            <h4>Goals</h4>
+                            <button>Filter</button>
+                        </div>
+
+                        <div class="goal-card">🏖 Vacation - $300 / $1000</div>
+                        <div class="goal-card">🏠 Apartment Deposit - $500 / $1500</div>
+
+                        <button id="addGoalBtn">+</button>
+                    </div>
+
+                </div>
+     
+            
             </div>
+
+            <!-- Add Goal Modal -->
+            <div id="goalModal" class="modal hidden">
+                <div class="modal-content">
+                    <span id="closeModalBtn" class="close">&times;</span>
+                    <h3>Add Goal</h3>
+                    <form id="goalForm">
+                        <label>Goal:</label>
+                        <input type="text" name="goalName" required>
+
+                        <label>How much?:</label>
+                        <input type="number" name="goalAmount" required>
+
+                        <label>By when?:</label>
+                        <input type="date" name="goalDate" required>
+
+                        <label>Type:</label>
+                        <select name="goalType">
+                            <option>Short-Term</option>
+                            <option>Long-Term</option>
+                        </select>
+
+                        <label>Saving Plan:</label>
+                        <textarea name="savingPlan" rows="3"></textarea>
+
+                        <button type="submit">Add</button>
+                    </form>
+                </div>
+            </div>
+
+
     
             <div class="navbar">
                 <a href="index.html" >
                     <img src="../icons/home.png" class="nav-icon">
                 </a>
-                <a href="finances.html">
+                <a href="expenses.html">
                     <img src="../icons/money.png" class="nav-icon">
                 </a>    
                 <a href="goals.html" class="active">
@@ -29,5 +95,6 @@
                 </a>
             </div>
         </div>
+        <script src="../prototype_scripts/goals.js"></script>
     </body>
 </html>
