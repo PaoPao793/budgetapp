@@ -75,6 +75,8 @@ body {
     text-align: center;
 }
 
+
+
 /* style for profile tab specific */
 .profile-container {
     max-width: fit-content;
@@ -333,8 +335,28 @@ body {
     margin: 8px 0;
 }
 
+/* add button syling (for goals and expenses) */
 
-/* Goals specific */
+.add-button {
+    display: block;
+    margin: 1rem 1rem 1rem 0;
+    background-color: #6ee7b7;
+    color: black;
+    border: none;
+    padding: 12px 16px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.add-button:hover {
+    background-color: #4dcf9b;
+}
+
+
+/* Styling for goals tab */
 #goals_container {
     padding: 20px;
     font-family: 'Nunito', sans-serif;
@@ -355,39 +377,9 @@ body {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-#addGoalBtn {
-    display: block;
-    margin: 1rem auto 0 auto;
-    background-color: #6ee7b7;
-    color: black;
-    border: none;
-    padding: 10px 15px;
-    font-size: 20px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
 
-#addGoalBtn:hover {
-    background-color: #4dcf9b;
-}
 
-#addCategoryBtn {
-    display: block;
-    margin: 1rem auto 0 auto;
-    background-color: #6ee7b7;
-    color: black;
-    border: none;
-    padding: 10px 15px;
-    font-size: 20px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
 
-#addCategoryBtn:hover {
-    background-color: #4dcf9b;
-}
 
 /* Modal Styles */
 .modal {
@@ -483,22 +475,7 @@ body {
 }
 
 /* expenses page */
-#addExpenseBtn, #addDepositBtn {
-    background-color: #6ee7b7;
-    color: black;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    padding: 12px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 45%;
-}
 
-#addExpenseBtn:hover, #addDepositBtn:hover {
-    background-color: #4dcf9b;
-}
 
 .donut-chart-wrapper {
     display: flex;
