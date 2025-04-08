@@ -7,8 +7,97 @@
 
 
         <div class="device">
-            <div class="content">
-                <h1>-Home Screen-</h1>
+            <div class="content">    
+            <!--Header-->
+            <div class="heading-container">
+                <!--profile picture and welcome msg-->
+                <img src="../images/man.jpg" id="profile_photo" style="width: 80px; height: 80px;">
+                <h1>Welcome John</h1>
+
+                <!--drop down menu for currency choice-->
+                <select id="currencyOptions">
+                    <option value="usd">USD</option>
+                    <option value="jpn">JPN</option>
+                    <option value="eur">EUR</option>
+                    <option value="cad">CAD</option>
+                </select>
+
+                <!--notification button-->
+                <button id="notif_button">
+                    <img src="../icons/notif.png">
+                </button>
+            </div>
+
+            <!--Balance-->
+            <div class="checking">
+                <h2>$300.50</h2>
+                <p>Available Weekly Balance</p>
+            </div>
+
+            <!--Quick Actions Bar-->
+            <div class="quickactions">
+                <button id="add-expense" class="qa-buttons">
+                    <img src="../icons/expense.png">
+                </button>
+                <button id="add-deposit" class="qa-buttons">
+                    <img src="../icons/deposit.png">
+                </button>
+                <button id="qa3" class="qa-buttons">
+                    <img src="../icons/placeholder.png">
+                </button>
+                <button id="qa4" class="qa-buttons">
+                    <img src="../icons/placeholder.png">
+                </button>
+                <button id="qa5" class="qa-buttons">
+                    <img src="../icons/placeholder.png">
+                </button>
+            </div>
+
+            <!--Overview-->
+            <div class="overview">
+                <h2>Recent Transactions</h2>
+                <div class="filter">
+                    <button>All</button>
+                    <button>Income</button>
+                    <button>Expenses</button>
+                </div>
+                <div>
+                    <h4>Today</h4>
+                    <ul class="transaction">
+                        <img src="../icons/grocery.png">
+                        <section class="transaction-detail" id="grocery">
+                            <h3>Grocery</h3>
+                            <p>Trader's Joe</p>
+                        </section>
+                        <section class="transaction-price">
+                            <h3>- $45.37</h3>
+                            <p>Feb 25</p>
+                        </section>
+                    </ul>
+                    <ul class="transaction">
+                        <img src="../icons/gas.png">
+                        <section class="transaction-detail" id="gas">
+                            <h3>Gas</h3>
+                            <p>Exxon</p>
+                        </section>
+                        <section class="transaction-price">
+                            <h3>- $30.24</h3>
+                            <p>Feb 25</p>
+                        </section>
+                    </ul>
+                    <h4>Yesterday</h4>
+                    <ul class="transaction">
+                        <img src="../icons/addmoney.png">
+                        <section class="transaction-detail" id="paycheck">
+                            <h3>Paycheck</h3>
+                            <p>Work</p>
+                        </section>
+                        <section class="transaction-price">
+                            <h3>+ $467.86</h3>
+                            <p>Feb 24</p>
+                        </section>
+                    </ul>
+                </div>
             </div>
     
             <div class="navbar">
@@ -27,6 +116,7 @@
                 <a href="account.html">
                     <img src="../icons/user.png" class="nav-icon">
                 </a>
+            </div>
             </div>
         </div>
     </body>
