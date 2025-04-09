@@ -48,4 +48,3 @@ function sortHistory(how) {
     cont.innerHTML = "";
     sortedCards.forEach(card => cont.appendChild(card));
 }
-
