@@ -41,8 +41,51 @@ document.addEventListener("DOMContentLoaded", () => {
         categoriesModal.classList.add("hidden");
     });
 
+    function updateCategoryDisplay() {
+        const listItems = document.querySelectorAll('#goal-categories-list li');
+        const toggleBtn = document.getElementById('toggleCategoriesBtn');
+    
+        if (listItems.length <= 3) {
+            toggleBtn.style.display = "none"; // No need for expand/collapse
+            listItems.forEach(li => li.style.display = "block");
+        } else {
+            toggleBtn.style.display = "block"; // Show the expand button
+    
+            listItems.forEach((li, index) => {
+                if (index < 3) {
+                    li.style.display = "block";
+                } else {
+                    li.style.display = "none";
+                }
+            });
+        }
+    }
+    
+    let categoriesExpanded = false;
+    
+    document.getElementById('toggleCategoriesBtn').addEventListener('click', () => {
+        const listItems = document.querySelectorAll('#goal-categories-list li');
+        categoriesExpanded = !categoriesExpanded;
+    
+        if (categoriesExpanded) {
+            listItems.forEach(li => li.style.display = "block");
+            document.getElementById('toggleCategoriesBtn').innerText = "Show Less";
+        } else {
+            listItems.forEach((li, index) => {
+                if (index < 3) {
+                    li.style.display = "block";
+                } else {
+                    li.style.display = "none";
+                }
+            });
+            document.getElementById('toggleCategoriesBtn').innerText = "Show More";
+        }
+    });
+
     function addCategory(value) {
         const list = document.getElementById("goal-categories-list");
+        const categorySelect = document.getElementById("categorySelect");
+
         if (value) {
             const li = document.createElement('li');
             li.innerHTML = `
@@ -55,11 +98,20 @@ document.addEventListener("DOMContentLoaded", () => {
             list.appendChild(li);
             // initializes the $$ for this category
             categoryAmounts[value] = 0;
+
+            // adds to dropdown list of categories
+            const option = document.createElement('option');
+            option.value = value;
+            option.textContent = value;
+            categorySelect.appendChild(option);
+
+            updateCategoryDisplay();
         }
     }
 
     function initializeCategories() {
         const list = document.getElementById("goal-categories-list");
+        const categorySelect = document.getElementById("categorySelect");
 
         // creates the food category; defaults to $200 in expenses
         const li1 = document.createElement('li');
@@ -99,6 +151,22 @@ document.addEventListener("DOMContentLoaded", () => {
         list.appendChild(li3);
         // initializes the $$ for this category
         categoryAmounts['🎉 Fun'] = 150;
+
+        // adds each to dropdown list of categories
+        const option1 = document.createElement('option');
+        option1.value = "🍔 Food";
+        option1.textContent = "🍔 Food";
+        categorySelect.appendChild(option1);
+
+        const option2 = document.createElement('option');
+        option2.value = "🏠 House";
+        option2.textContent = "🏠 House";
+        categorySelect.appendChild(option2);
+
+        const option3 = document.createElement('option');
+        option3.value = "🎉 Fun";
+        option3.textContent = "🎉 Fun";
+        categorySelect.appendChild(option3);
     }
     //
 
@@ -112,6 +180,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Optional: handle form submissions (incomplete)
     document.getElementById("expenseForm").addEventListener("submit", (e) => {
         e.preventDefault();
+        const category = document.getElementById("categorySelect").value; // gets the selected category
+
+
         alert("Expense added!");
         expenseModal.classList.add("hidden");
         e.target.reset();
