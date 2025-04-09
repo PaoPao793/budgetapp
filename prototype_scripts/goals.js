@@ -1,10 +1,110 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // goal modal
     const modal = document.getElementById("goalModal");
     const openBtn = document.getElementById("addGoalBtn");
     const closeBtn = document.getElementById("closeModalBtn");
     const goalForm = document.getElementById("goalForm");
-    const goalsSection = document.getElementById("goalsList"); // target this container
+    const goalsSection = document.getElementById("goalsList");
 
+    // overview editing 
+    const editBtn = document.getElementById("editOverviewBtn");
+    const saveBtn = document.getElementById("saveOverviewBtn");
+    const budgetValues = document.getElementById("budgetValues");
+    const editFields = document.getElementById("editFields");
+
+    // adding new category to the overview 
+    const categoryModal = document.getElementById("addCategoryModal");
+    const openCategoryBtn = document.getElementById("addCategoryBtn");
+    const closeCategoryBtn = document.getElementById("closeCategoryModalBtn");
+    const categoryForm = document.getElementById("categoryForm");
+
+    openCategoryBtn.addEventListener("click", () => {
+        categoryModal.classList.remove("hidden");
+    });
+
+    closeCategoryBtn.addEventListener("click", () => {
+        categoryModal.classList.add("hidden");
+    });
+
+    window.addEventListener("click", (e) => {
+        if (e.target === categoryModal) {
+            categoryModal.classList.add("hidden");
+        }
+    });
+
+    // adding new goal 
+    categoryForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const categoryName = document.getElementById("categoryNameInput").value.trim();
+        const amount = document.getElementById("categoryAmountInput").value.trim();
+
+        if (categoryName && amount) {
+            // Add to visible overview
+            const viewItem = document.createElement("p");
+            viewItem.innerHTML = `${categoryName}: $<span class="category-amount">${amount}</span>`;
+            document.getElementById("budgetValues").appendChild(viewItem);
+
+            // Add to editFields
+            const label = document.createElement("label");
+            label.textContent = `${categoryName}:`;
+
+            const amountInput = document.createElement("input");
+            amountInput.type = "number";
+            amountInput.className = "custom-amount";
+            amountInput.setAttribute("data-name", categoryName);
+            amountInput.value = amount;
+
+            const fieldsDiv = document.getElementById("editFields");
+            const saveButton = document.getElementById("saveOverviewBtn");
+
+            fieldsDiv.insertBefore(label, saveButton);
+            fieldsDiv.insertBefore(amountInput, saveButton);
+        }
+
+        categoryForm.reset();
+        categoryModal.classList.add("hidden");
+    });
+
+
+    // logic for clicking the edit button and changing amounts 
+    saveBtn.addEventListener("click", () => {
+        const newBudget = document.getElementById("weeklyBudgetInput").value;
+        const newSaving = document.getElementById("weeklySavingInput").value;
+
+        document.getElementById("weeklyBudget").textContent = newBudget;
+        document.getElementById("weeklySaving").textContent = newSaving;
+
+        // Toggle weekly fields back
+        budgetValues.classList.remove("hidden");
+        editFields.classList.add("hidden");
+
+        // Save updated values for all custom categories added to editFields
+        // Clear all custom entries in budgetValues except the first 2 default lines
+        const baseChildren = Array.from(budgetValues.children).slice(0, 2);
+        budgetValues.innerHTML = '';
+        baseChildren.forEach(child => budgetValues.appendChild(child));
+
+        // Get all custom-amount inputs inside #editFields (use data-name for label)
+        const customInputs = document.querySelectorAll('#editFields .custom-amount');
+
+        customInputs.forEach(input => {
+            const categoryName = input.getAttribute('data-name');
+            const amount = input.value;
+
+            const viewItem = document.createElement('p');
+            viewItem.innerHTML = `${categoryName}: $<span class="category-amount">${amount}</span>`;
+            budgetValues.appendChild(viewItem);
+        });
+    });
+
+    editBtn.addEventListener("click", () => {
+        budgetValues.classList.add("hidden");
+        editFields.classList.remove("hidden");
+    });
+
+
+    // the collapsible things for the goals 
     openBtn.addEventListener("click", () => {
         modal.classList.remove("hidden");
     });
@@ -13,12 +113,14 @@ document.addEventListener("DOMContentLoaded", () => {
         modal.classList.add("hidden");
     });
 
+
     window.addEventListener("click", (e) => {
         if (e.target === modal) {
             modal.classList.add("hidden");
         }
     });
 
+    // adding goal 
     goalForm.addEventListener("submit", function (e) {
         e.preventDefault();
 
@@ -33,19 +135,40 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Create new goal card
+        // Create expandable goal card
         const goalCard = document.createElement("div");
-        goalCard.className = "goal-card";
+        goalCard.className = "goal-card collapsible";
         goalCard.innerHTML = `
-            <strong>${goalName}</strong><br>
-            Target: $${amount} | Due: ${dueDate}<br>
-            <em>Type:</em> ${type}<br>
-            <em>Plan:</em> ${plan}
+            <div class="goal-summary">
+                <strong>${goalName}</strong> - $0 / $${amount}
+            </div>
+            <div class="goal-details hidden">
+                <p><strong>Target:</strong> $${amount}</p>
+                <p><strong>Due:</strong> ${dueDate}</p>
+                <p><strong>Type:</strong> ${type}</p>
+                <p><strong>Plan:</strong><br>${plan.replace(/\n/g, "<br>")}</p>
+            </div>
         `;
+
+        goalCard.addEventListener("click", () => {
+            const details = goalCard.querySelector(".goal-details");
+            details.classList.toggle("hidden");
+        });
 
         goalsSection.appendChild(goalCard);
 
         modal.classList.add("hidden");
         this.reset();
     });
+
+    // Attach expand/collapse logic to any pre-existing goal cards -> rm if we get rid of default vals 
+    document.querySelectorAll('.goal-card.collapsible').forEach(card => {
+        card.addEventListener('click', () => {
+            const details = card.querySelector('.goal-details');
+            if (details) {
+                details.classList.toggle('hidden');
+            }
+        });
+    });
+
 });
