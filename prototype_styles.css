@@ -584,28 +584,7 @@ body {
     display: none;
 }
 
-#backHomeButton {
-    background-color: transparent;
-    color: #333;
-    font-size: 30px;
-    font-weight: bold;
-    border: none;
-    padding: 1rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    transition: color 0.2s ease;
-}
-
-#backHomeButton:hover {
-    color: #007acc;
-    text-decoration: underline;
-}
-
 /* expenses page */
-
-
-
 
 .donut-chart-wrapper {
     display: flex;
