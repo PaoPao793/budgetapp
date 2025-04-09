@@ -296,9 +296,12 @@ body {
 
 .analytics-section {
     background-color: #dce5f8;
-    padding: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     border-radius: 8px;
-    margin-top: 20px;
+    margin-top: 5px;
 }
 
 .analytics-header {
