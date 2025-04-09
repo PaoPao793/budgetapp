@@ -75,6 +75,24 @@ body {
     text-align: center;
 }
 
+/* shared for add buttons */
+.add-button {
+    background-color: #6ee7b7;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-button:hover {
+    background-color: #4dcf9b;
+}
+
+
 
 
 /* style for profile tab specific */
@@ -487,6 +505,7 @@ body {
 
 
 
+
 /* Modal Styles */
 .modal {
     position: fixed;
@@ -581,6 +600,8 @@ body {
 }
 
 /* expenses page */
+
+
 
 
 .donut-chart-wrapper {
