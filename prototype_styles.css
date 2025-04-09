@@ -316,10 +316,10 @@ body {
     background-color: #dce5f8;
     padding-left: 30px;
     padding-right: 30px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 15px;
+    padding-bottom: 20px;
     border-radius: 8px;
-    margin-top: 5px;
+    margin-top: 20px;
 }
 
 .analytics-header {
@@ -695,19 +695,43 @@ body {
 }
 
 #toggleViewBtn {
-    background-color: #93c5fd;
-    color: black;
-    padding: 6px 12px;
+    background-color: #2196F3;
+    color: white;
     font-size: 14px;
-    font-weight: bold;
+    padding: 8px 16px;
     border: none;
-    border-radius: 6px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    margin-left: 10px;
 }
 
 #toggleViewBtn:hover {
-    background-color: #60a5fa;
+    background-color: rgb(65, 115, 222);
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#toggleCategoriesBtn {
+    background-color: #aeaeae;
+    color: black;
+    font-size: 14px;
+    padding: 4px 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#toggleCategoriesBtn:hover {
+    background-color: #7c7c7c;
+    color: black;
+    font-size: 14px;
+    padding: 4px 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
 }
 
 
@@ -766,3 +790,44 @@ body {
 #stats-p {
     margin-top: .5em;
 }
+
+#editCategoriesBtn {
+    background-color: #2196F3;
+    color: white;
+    font-size: 14px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#editCategoriesBtn:hover {
+    background-color: rgb(65, 115, 222);
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+
+
+/*
+#toggleViewBtn {
+    background-color: #2196F3;
+    color: white;
+    font-size: 14px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#toggleViewBtn:hover {
+    background-color: rgba(17, 55, 138);
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+*/
