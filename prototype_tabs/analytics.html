@@ -6,7 +6,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-   
+        <script src="../scripts/analytics.js" defer></script>
     </head>
     <body>
 
@@ -15,30 +15,54 @@
             <div class="content">
                 <button id="backHomeButton" onclick="location.href='index.html'">&larr;</button>
                 <div id="analytics_container">
-                    <button id="backHomeButton" onclick="location.href='index.html'">&larr;</button>
 
                     <h2>Analytics</h2>
-                    
-                    <img id="graph_img" src="https://www.sketchappsources.com/resources/source-image/line-chart-buninux.png">
                 
                     <div class="analytics-section">
                         <div class="analytics-header">
                             <h4>History</h4>
-                            <button>Filter</button>
                         </div>
-                        <ul>
-                            <li>Deposited $2500 paycheck - 4/11/24</li>
-                            <li>Spent $1400 on rent - 4/1/24</li>
-                        </ul>
+                        <div class="sort-subheader">
+                            Sort by: 
+                            <button id="sort-newest">Newest</button>
+                            <button id="sort-oldest">Oldest</button>
+                            <button id="sort-amount">Amount</button>
+                        </div>
+                        <div id="history-card-container">
+                            <div class="history-card">
+                                💳 Credit Bill - $300 payment <span id="date-1"><strong>1/11/24</strong></span> <span class="amount">$300</span>
+                            </div>
+                            <div class="history-card">
+                                💵 Paycheck - $2500 deposit <span id="date-2"><strong>4/11/24</strong></span> <span class="amount">$2500</span>
+                            </div>
+                            <div class="history-card">
+                                🏠 Rent - $1400 payment <span id="date-3"><strong>4/1/24</strong></span> <span class="amount">$1400</span>
+                            </div>
+                            <div class="history-card">
+                                💵 Paycheck - $2500 deposit <span id="date-4"><strong>3/11/24</strong></span> <span class="amount">$2500</span>
+                            </div>
+                        </div>
                     </div>
                 
                     <div class="analytics-section">
-                        <h4>Statistics</h4>
-                        <p>Average spending:</p>
-                        <ul>
-                            <li><em>Entertainment</em>: $400/mo</li>
-                            <li><em>Food</em>: $375/mo</li>
-                        </ul>
+                        <div class="analytics-header">
+                            <h4>Monthly Statistics</h4>
+                        </div>
+                        <p id="stats-p">How your spending has changed over the past month.</p> 
+                        <div class="analytics-cd-cont">
+                            <div class="analytics-card">
+                                <div class="percentage" style="color: rgb(163, 54, 54)">+10%</div>
+                                <h5>Credit Card Bill</h5>
+                            </div>
+                            <div class="analytics-card">
+                                <div class="percentage" style="color: rgb(46, 54, 63)">+0%</div>
+                                <h5>Housing Cost</h5>
+                            </div>
+                            <div class="analytics-card">
+                                <div class="percentage" style="color: rgb(74, 117, 14)">-5%</div>
+                                <h5>Total Spending</h5>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
