@@ -2,7 +2,7 @@
     <head>
         <title>Goals</title>
         <link rel="stylesheet" href="../prototype_styles.css">
-        <link rel="stylesheet" href="../prototype_styles.css">
+        <link rel="stylesheet" href="../goals_styles.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -21,10 +21,26 @@
                     <div class="analytics-section">
                         <div class="analytics-header">
                             <h4>Overview</h4>
-                            <button>Edit</button>
+                            <button id="editOverviewBtn">Edit</button>
                         </div>
-                        <p>Weekly Budget: $200</p>
-                        <p>Weekly Saving: $100</p>
+
+                        <div id="budgetValues">
+                            <p>Weekly Budget: $<span id="weeklyBudget">200</span></p>
+                            <p>Weekly Saving: $<span id="weeklySaving">100</span></p>
+                        </div>
+
+                        <div id="editFields" class="hidden">
+                            <label>Weekly Budget:</label>
+                            <input type="number" id="weeklyBudgetInput" value="200">
+                            <label>Weekly Saving:</label>
+                            <input type="number" id="weeklySavingInput" value="100">
+                            
+                            
+                            <button id="saveOverviewBtn">Save</button>
+                            
+                        </div>
+
+                        <div id="customBudgets"></div>
 
                         <button id="addCategoryBtn" class="add-button">+</button>
                     </div>
@@ -35,22 +51,54 @@
                             <button>Filter</button>
                         </div>
 
-                        <div class="goal-card">🏖 Vacation - $300 / $1000</div>
-                        <div class="goal-card">🏠 Apartment Deposit - $500 / $1500</div>
-
-                        <div id="goalsList">
-                        
+                        <div class="goal-card collapsible">
+                            <div class="goal-summary"><Strong>Vacation</Strong> - $300 / $1000</div>
+                            <div class="goal-details hidden">
+                              <p><strong>Target:</strong> $1000</p>
+                              <p><strong>Due:</strong> 2025-06-01</p>
+                              <p><strong>Type:</strong> Long-Term</p>
+                              <p><strong>Plan:</strong><br>Save $100 every 2 weeks using direct deposit.</p>
+                            </div>
                         </div>
+                          
+                        <div class="goal-card collapsible">
+                            <div class="goal-summary">
+                                <Strong>Apartment</Strong> - $100 / $900
+                            </div>
+                            <div class="goal-details hidden">
+                                <p><strong>Target:</strong> $900</p>
+                                <p><strong>Due:</strong> 2032-09-01</p>
+                                <p><strong>Type:</strong> Long-Term</p>
+                                <p><strong>Plan:</strong><br>Save $100 every 2 days using</p>
+                            </div>
+                        </div>
+                          
+
+                        <div id="goalsList"></div>
                         
                         <button id="addGoalBtn" class="add-button">+</button>
                     </div>
 
-                    
-
                 </div>
-     
-            
             </div>
+
+            <!-- Add Category Modal -->
+            <div id="addCategoryModal" class="modal hidden">
+                <div class="modal-content">
+                <span id="closeCategoryModalBtn" class="close">&times;</span>
+                <h3>Add Budget Category</h3>
+                <form id="categoryForm">
+                    <label>Category Name:</label>
+                    <input type="text" id="categoryNameInput" required>
+            
+                    <label>Amount:</label>
+                    <input type="number" id="categoryAmountInput" required>
+            
+                    <button type="submit">Add</button>
+                </form>
+                </div>
+            </div>
+  
 
             <!-- Add Goal Modal -->
             <div id="goalModal" class="modal hidden">

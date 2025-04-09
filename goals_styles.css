@@ -1,0 +1,52 @@
+/* Custom styles for Goals Page */
+
+/* Expandable goal card */
+.goal-card.collapsible {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.goal-summary {
+    font-weight: regular;
+}
+
+.goal-details {
+    font-size: 14px;
+    padding-top: 8px;
+    color: #444;
+}
+
+.goal-details.hidden {
+    display: none;
+}
+
+/* Editable Overview Section */
+#editFields {
+    margin-top: 10px;
+}
+
+#editFields input {
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+#saveOverviewBtn {
+    background-color: #6ee7b7;
+    color: black;
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+#saveOverviewBtn:hover {
+    background-color: #4dcf9b;
+}
+
+
