@@ -43,35 +43,40 @@
                     </div>
 
                     <div class="analytics-section">
+                        
                         <div class="analytics-header">
                             <h4>Goals</h4>
-                            <button>Filter</button>
                         </div>
-
-                        <div class="goal-card collapsible">
-                            <div class="goal-summary"><Strong>Vacation</Strong> - $300 / $1000</div>
-                            <div class="goal-details hidden">
-                              <p><strong>Target:</strong> $1000</p>
-                              <p><strong>Due:</strong> 2025-06-01</p>
-                              <p><strong>Type:</strong> Long-Term</p>
-                              <p><strong>Plan:</strong><br>Save $100 every 2 weeks using direct deposit.</p>
+                        <div class="sort-subheader">
+                            Sort by: 
+                            <button id="sort-upcoming">Upcoming</button>
+                            <button id="sort-amount-asc">High to Low</button>
+                            <button id="sort-amount-desc">Low to High</button>
+                        </div>
+        
+                        <div id="goalsList">
+                            <div class="goal-card collapsible">
+                                <div class="goal-summary"><Strong>Vacation</Strong> - $300 / $1000</div>
+                                <div class="goal-details hidden">
+                                  <p><strong>Target:</strong> $1000</p>
+                                  <p><strong>Due:</strong> 2025-06-01</p>
+                                  <p><strong>Type:</strong> Long-Term</p>
+                                  <p><strong>Plan:</strong><br>Save $100 every 2 weeks using direct deposit.</p>
+                                </div>
+                            </div>
+                              
+                            <div class="goal-card collapsible">
+                                <div class="goal-summary">
+                                    <Strong>Apartment</Strong> - $100 / $900
+                                </div>
+                                <div class="goal-details hidden">
+                                    <p><strong>Target:</strong> $900</p>
+                                    <p><strong>Due:</strong> 2032-09-01</p>
+                                    <p><strong>Type:</strong> Long-Term</p>
+                                    <p><strong>Plan:</strong><br>Save $100 every 2 days using</p>
+                                </div>
                             </div>
                         </div>
-                          
-                        <div class="goal-card collapsible">
-                            <div class="goal-summary">
-                                <Strong>Apartment</Strong> - $100 / $900
-                            </div>
-                            <div class="goal-details hidden">
-                                <p><strong>Target:</strong> $900</p>
-                                <p><strong>Due:</strong> 2032-09-01</p>
-                                <p><strong>Type:</strong> Long-Term</p>
-                                <p><strong>Plan:</strong><br>Save $100 every 2 days using</p>
-                            </div>
-                        </div>
-                          
-
-                        <div id="goalsList"></div>
                         
                         <button id="addGoalBtn" class="add-button">+</button>
                     </div>

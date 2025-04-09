@@ -172,3 +172,59 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+window.onload = function () {
+    document.getElementById("sort-upcoming").click(); // Default sort
+};
+
+document.getElementById("sort-upcoming").addEventListener("click", function () {
+    sortGoals("upcoming");
+    markActiveFilter("sort-upcoming");
+});
+
+document.getElementById("sort-amount-asc").addEventListener("click", function () {
+    sortGoals("amount-asc");
+    markActiveFilter("sort-amount-asc");
+});
+
+document.getElementById("sort-amount-desc").addEventListener("click", function () {
+    sortGoals("amount-desc");
+    markActiveFilter("sort-amount-desc");
+});
+
+function markActiveFilter(activeId) {
+    const filterIds = ["sort-upcoming", "sort-amount-asc", "sort-amount-desc"];
+    filterIds.forEach(id => {
+        const btn = document.getElementById(id);
+        if (btn) {
+            btn.style.backgroundColor = (id === activeId) ? "rgba(17, 55, 138)" : "#2196F3";
+            btn.style.color = (id === activeId) ? "white" : "black";
+        }
+    });
+}
+
+function sortGoals(method) {
+    const container = document.getElementById("goalsList");
+    const cards = Array.from(container.querySelectorAll(".goal-card"));
+
+    const sorted = cards.sort((a, b) => {
+        const amountA = parseInt(a.querySelector(".goal-summary").textContent.match(/\$[\d,]+/g)?.[1].replace(/[$,]/g, "") || "0");
+        const amountB = parseInt(b.querySelector(".goal-summary").textContent.match(/\$[\d,]+/g)?.[1].replace(/[$,]/g, "") || "0");
+
+        const dueDateA = new Date(a.querySelector(".goal-details").innerHTML.match(/<strong>Due:<\/strong>\s*(\d{4}-\d{2}-\d{2})/)[1]);
+        const dueDateB = new Date(b.querySelector(".goal-details").innerHTML.match(/<strong>Due:<\/strong>\s*(\d{4}-\d{2}-\d{2})/)[1]);
+
+        if (method === "upcoming") {
+            return dueDateA - dueDateB;
+        } else if (method === "amount-asc") {
+            return amountA - amountB;
+        } else if (method === "amount-desc") {
+            return amountB - amountA;
+        }
+
+        return 0;
+    });
+
+    container.innerHTML = "";
+    sorted.forEach(card => container.appendChild(card));
+}
