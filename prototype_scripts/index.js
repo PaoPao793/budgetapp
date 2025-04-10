@@ -231,6 +231,8 @@ function setActive(btn) {
     btn.classList.add('active');
 }
 
+setActive(allBtn); // Default active button is the All button
+
 allBtn.addEventListener('click', () => {
     transactions.forEach(tx => tx.style.display = 'flex');
     setActive(allBtn);

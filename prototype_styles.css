@@ -530,11 +530,6 @@ body {
     color: white;
 }
 
-#overview-all {
-    background-color: rgb(219, 80, 161); /* default set All button to active */
-    color: white;
-}
-
 #more-transaction {
     margin-top: 10px;
     margin-bottom: 15px;
