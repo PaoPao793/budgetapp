@@ -356,37 +356,76 @@ body {
     margin: 8px 0;
 }
 
-/* Home Page Styles */
-.heading-container {
+/* home page styles */
+.home-page {
+    font-family: 'Nunito', sans-serif;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.header-left {
     display: flex;
     align-items: center;
-    gap: 20px;
-    padding-left: 25px;
-    padding-right: 25px;
+    gap: 12px;
 }
 
-.heading-container img {
-    width: 100%;
-    height: auto;
+.welcome-text {
+    font-size: 30px;
+    font-weight: 500;
+    font-weight: bold;
 }
 
-.heading-container button {
-    border: none;
-    border-radius: 25px;
-    width: 50px;
-    height: 50px;
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+#currency-dropdown {
+    padding: 2px;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+}
+
+#home-profile {
+    margin-top: 2rem;
+    width: 5rem; /* Set width */
+    height: 5rem; /* Set height */
+    object-fit: cover; /* Ensures the image fills the area */
+    border-radius: 50%; /* Makes it a circle */
+    border: 3px solid gray; /* Optional border */
+}
+
+#notif-icon {
+    width: 2rem;
+    height: 2rem;  
 }
 
 #notif_button {
-    background-color: #96c6e5;
+    border: none;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    background-color: #2196F3;
 }
 
 #notif_button:hover {
-    background-color: #bfd1e1;
+    background-color: #1976D2;
 }
 
 .checking {
     border-radius: 25px;
+    text-align: left;
     padding-left: 20px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -394,94 +433,112 @@ body {
     background-color: #dce5f8;
 }
 
-.quickactions {
+#balance-text {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.quick-actions {
     display: flex;
-    align-items: center;
-    text-align: center;
-    gap: 10px;
-    padding: 10px;
+    align-items: space-between; /* Space out the buttons */
+    align-items: center; /* Center items vertically */
+    justify-content: center;
+    gap: 20px; /* Add space between buttons */
+    margin-top: 20px;
 }
 
-.quickactions img {
-    width: 50%;
-    height: auto;
+.action-button {
+    text-align: center; /* Center the icon and label */
 }
 
-.quickactions button {
-    width: 75px;
-    height: 75px;
-    border: 3px solid grey;
-    border-radius: 25px;
-    margin: auto;
+.qa-btn {
+    background-color: #2196F3;
+    border-color: #e296e5;
+    border-width: 5px;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Stack the icon and label vertically */
+    align-items: center; /* Center the items horizontally */
+    justify-content: center;
+    width: 6rem;
+    height: 6rem;
 }
 
-.quickactions button:hover {
-    background-color: #bfd1e1;
+.qa-btn:hover {
+    background-color: #1976D2;
+}
+
+.qa-icon {
+    width: 30px; /* Set the size of the icon */
+    height: 30px;
+    margin-bottom: 10px; /* Space between icon and label */
+}
+
+.qa-label {
+    font-size: 12px; /* Set label font size */
+    color: #ffffff; /* Label color */
+    font-weight: 500;
 }
 
 .overview {
     border-radius: 25px;
+    padding: 5px;
     padding-left: 20px;
     padding-right: 20px;
     margin: 15px;
-    height: 425px;
-    overflow-y: auto;
     background-color: #dce5f8;
 }
 
-.filter {
+.overview-filter {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.filter button {
+.overview-btn {
     background-color: #ecd4ed;
     border: none;
     border-radius: 5px;
     text-align: center;
-    padding: 5px;
-    width: 75px;
+    color: rgb(66, 66, 66);
+    padding: 8px;
 }
 
-.filter button:hover {
+.overview-btn:hover {
     background-color: #ecdeec;
 }
 
-.overview ul {
-    border-radius: 25px;
+.transaction-card {
     background-color: white;
-    padding: 20px;
-
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 30px;
+    justify-content: space-between; /* Pushes items to opposite sides */
+    align-items: center; /* Vertically centers content */
 }
 
-.overview img {
-    width: 50px;
-    height: 50px;
+.transaction-card span {
+    font-weight: bold;
 }
 
-#grocery {
-    margin-right: 155px;
+.overview-btn.active {
+    background-color: rgb(219, 80, 161);
+    color: white;
 }
 
-#gas {
-    margin-right: 200px;
+#overview-all {
+    background-color: rgb(219, 80, 161); /* default set All button to active */
+    color: white;
 }
 
-#paycheck {
-    margin-right: 140px;
+#more-transaction {
+    margin-top: 10px;
+    margin-bottom: 15px;
 }
-
-.transaction-price {
-    text-align: right;
-    padding-right: 10px;
-}
-
-
 
 /* Goals specific */
 #goals_container {
@@ -520,10 +577,6 @@ body {
     margin-left: auto; /* Forces the date to align to the right */
     margin-right: 1em;
 }
-
-
-
-
 
 /* Modal Styles */
 .modal {
