@@ -275,7 +275,7 @@ const expenseForm = document.getElementById('expenseForm');
 // Load reminders from localStorage
 function loadReminders() {
     // if no remidners
-    reminderList.innerHTML = '<li>No upcoming reminders</li>';
+    //reminderList.innerHTML = '<li>No upcoming reminders</li>';
 
     // The reminders for now are hardcoded in html
 }
