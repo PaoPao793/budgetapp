@@ -217,9 +217,9 @@ function sortGoals(method) {
         if (method === "upcoming") {
             return dueDateA - dueDateB;
         } else if (method === "amount-asc") {
-            return amountA - amountB;
-        } else if (method === "amount-desc") {
             return amountB - amountA;
+        } else if (method === "amount-desc") {
+            return amountA - amountB;
         }
 
         return 0;
