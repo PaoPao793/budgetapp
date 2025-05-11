@@ -6,6 +6,13 @@
     transition: all 0.3s ease;
 }
 
+.goal-card.collapsible:hover {
+    background-color: rgb(227, 227, 227);
+    border-width: 2px;
+    border-color: gray;
+    border-style: solid;
+}
+
 .goal-summary {
     font-weight: regular;
 }
