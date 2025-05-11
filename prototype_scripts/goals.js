@@ -69,6 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // logic for clicking the edit button and changing amounts 
     saveBtn.addEventListener("click", () => {
+        editBtn.classList.remove("hidden");
+        saveBtn.classList.add("hidden");
         const newBudget = document.getElementById("weeklyBudgetInput").value;
         const newSaving = document.getElementById("weeklySavingInput").value;
 
@@ -101,6 +103,8 @@ document.addEventListener("DOMContentLoaded", () => {
     editBtn.addEventListener("click", () => {
         budgetValues.classList.add("hidden");
         editFields.classList.remove("hidden");
+        editBtn.classList.add("hidden");
+        saveBtn.classList.remove("hidden");
     });
 
 
