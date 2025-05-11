@@ -1,112 +1,279 @@
 <html>
-    <head>
-        <title>Home</title>
-        <link rel="stylesheet" href="../prototype_styles.css">
-    </head>
-    <body>
+
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="../prototype_styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <script src="../prototype_scripts/index.js" defer></script>
+</head>
+
+<body>
 
 
-        <div class="device">
-            <div class="content">    
-            <!--Header-->
-            <div class="heading-container">
-                <!--profile picture and welcome msg-->
-                <img src="../images/man.jpg" id="profile_photo" style="width: 80px; height: 80px;">
-                <h1>Welcome John</h1>
+    <div class="device">
+        <div class="content">
+            <div class="home-page">
+                <!--Header-->
+                <div class="header-container">
+                    <!--Left Side-->
+                    <div class="header-left">
+                        <!--profile picture and welcome msg-->
+                        <img src="../images/man.jpg" id="home-profile">
+                        <span class="welcome-text">Welcome John!</span>
+                    </div>
 
-                <!--drop down menu for currency choice-->
-                <select id="currencyOptions">
-                    <option value="usd">USD</option>
-                    <option value="jpn">JPN</option>
-                    <option value="eur">EUR</option>
-                    <option value="cad">CAD</option>
-                </select>
-
-                <!--notification button-->
-                <button id="notif_button">
-                    <img src="../icons/notif.png">
-                </button>
-            </div>
-
-            <!--Balance-->
-            <div class="checking">
-                <h2>$300.50</h2>
-                <p>Available Weekly Balance</p>
-            </div>
-
-            <!--Quick Actions Bar-->
-            <div class="quickactions">
-                <button id="add-expense" class="qa-buttons">
-                    <img src="../icons/expense.png">
-                </button>
-                <button id="add-deposit" class="qa-buttons">
-                    <img src="../icons/deposit.png">
-                </button>
-                <button id="qa3" class="qa-buttons">
-                    <img src="../icons/placeholder.png">
-                </button>
-                <button id="qa4" class="qa-buttons">
-                    <img src="../icons/placeholder.png">
-                </button>
-                <button id="qa5" class="qa-buttons">
-                    <img src="../icons/placeholder.png">
-                </button>
-            </div>
-
-            <!--Overview-->
-            <div class="overview">
-                <h2>Recent Transactions</h2>
-                <div class="filter">
-                    <button>All</button>
-                    <button>Income</button>
-                    <button>Expenses</button>
+                    <!--Right Side-->
+                    <div class="header-right">
+                        <!--drop down menu for currency choice-->
+                        <select id="currency-dropdown">
+                            <option value="USD">$ USD</option>
+                            <option value="CAD">$ CAD</option>
+                            <option value="EUR">€ EUR</option>
+                            <option value="JPY">¥ JPY</option>
+                        </select>
+                        <!--notification button-->
+                        <button id="notif_button">
+                            <img src="../icons/notification.png" id="notif-icon">
+                        </button>
+                    </div>
                 </div>
-                <div>
-                    <h4>Today</h4>
-                    <ul class="transaction">
-                        <img src="../icons/grocery.png">
-                        <section class="transaction-detail" id="grocery">
-                            <h3>Grocery</h3>
-                            <p>Trader's Joe</p>
-                        </section>
-                        <section class="transaction-price">
-                            <h3>- $45.37</h3>
-                            <p>Feb 25</p>
-                        </section>
-                    </ul>
-                    <ul class="transaction">
-                        <img src="../icons/gas.png">
-                        <section class="transaction-detail" id="gas">
-                            <h3>Gas</h3>
-                            <p>Exxon</p>
-                        </section>
-                        <section class="transaction-price">
-                            <h3>- $30.24</h3>
-                            <p>Feb 25</p>
-                        </section>
-                    </ul>
-                    <h4>Yesterday</h4>
-                    <ul class="transaction">
-                        <img src="../icons/addmoney.png">
-                        <section class="transaction-detail" id="paycheck">
-                            <h3>Paycheck</h3>
-                            <p>Work</p>
-                        </section>
-                        <section class="transaction-price">
-                            <h3>+ $467.86</h3>
-                            <p>Feb 24</p>
-                        </section>
-                    </ul>
+
+                <!--Notification Modal-->
+                <div id="notifModal" class="modal hidden">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h3>Upcoming Reminders</h3>
+                        <ul id="reminderList">
+                            <!-- Reminders will be injected here -->
+                            <!--For now the reminders are hard-coded-->
+                            <li>
+                                <label>04/20/2025 - Rent 🏠 - $1200.00</label>
+                            </li>
+                            <li>
+                                <label>04/22/2025 - Netflix 🎥 - $15.99</label>
+                            </li>
+                            <li>
+                                <label>04/25/2025 - Credit Card 💳 - $300.00</label>
+                            </li>
+                            <li>
+                                <label>05/01/2025 - Spotify 🎧 - $9.99</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!--Balance-->
+                <div class="checking">
+                    <p id="balance-text" class="money">$300.50</p>
+                    <p>Available Weekly Balance</p>
+                </div>
+
+                <!--Quick Actions Bar-->
+                <div class="quick-actions">
+                    <div class="action-button">
+                        <button id="addExpenseBtn" class="qa-btn">
+                            <img class="qa-icon" src="../icons/payment.png">
+                            <span class="qa-label">Add Expense</span>
+                        </button>
+                    </div>
+                    <div class="action-button">
+                        <button id="addDepositBtn" class="qa-btn">
+                            <img class="qa-icon" src="../icons/profit.png">
+                            <span class="qa-label">Add Deposit</span>
+                        </button>
+                    </div>
+                    <div class="action-button">
+                        <button id="addGoalBtn" class="qa-btn">
+                            <img class="qa-icon" src="../icons/add-goal.png">
+                            <span class="qa-label">Add Goal</span>
+                        </button>
+                    </div>
+                    <div class="action-button">
+                        <button id="addReminderBtn" class="qa-btn">
+                            <img class="qa-icon" src="../icons/reminder.png">
+                            <span class="qa-label">Add Reminder</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!--Quick Action Modals-->
+                <!--Expense Modal-->
+                <div id="expenseModal" class="modal hidden">
+                    <div class="modal-content">
+                        <span class="close" id="closeExpenseModal">&times;</span>
+                        <h3>Add Expense</h3>
+                        <form id="expenseForm">
+                            <label>Date:</label>
+                            <input type="date" required>
+
+                            <label>Name:</label>
+                            <input type="text" required>
+
+                            <label>Category:</label>
+                            <select id="categorySelect" required>
+                                <!-- automatically generated from categories list in expenses.js -->
+                                <!--can try to connect the two pages in the future, for now it is hardcoded-->
+                                <option>🍔 Food</option>
+                                <option>🏠 House</option>
+                                <option>🎉 Fun</option>
+                            </select>
+
+                            <label>Amount:</label>
+                            <input type="number" required>
+
+                            <label>Frequency:</label>
+                            <select>
+                                <option>Once</option>
+                                <option>Weekly</option>
+                                <option>Monthly</option>
+                            </select>
+
+                            <button type="submit">Add</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!--Deposit Modal-->
+                <div id="depositModal" class="modal hidden">
+                    <div class="modal-content">
+                        <span class="close" id="closeDepositModal">&times;</span>
+                        <h3>Add Deposit</h3>
+                        <form id="depositForm">
+                            <label>Date:</label>
+                            <input type="date" required>
+
+                            <label>Name:</label>
+                            <input type="text" required>
+
+                            <label>Amount:</label>
+                            <input type="number" required>
+
+                            <label>Save towards:</label>
+                            <input type="text">
+
+                            <label>Frequency:</label>
+                            <select>
+                                <option>Once</option>
+                                <option>Weekly</option>
+                                <option>Monthly</option>
+                            </select>
+
+                            <button type="submit">Add</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!--Goal Modal-->
+                <div id="goalModal" class="modal hidden">
+                    <div class="modal-content">
+                        <span id="closeModalBtn" class="close">&times;</span>
+                        <h3>Add Goal</h3>
+                        <form id="goalForm">
+                            <label>Goal:</label>
+                            <input type="text" name="goalName" required>
+
+                            <label>How much?:</label>
+                            <input type="number" name="goalAmount" required>
+
+                            <label>By when?:</label>
+                            <input type="date" name="goalDate" required>
+
+                            <label>Type:</label>
+                            <select name="goalType">
+                                <option>Short-Term</option>
+                                <option>Long-Term</option>
+                            </select>
+
+                            <label>Saving Plan:</label>
+                            <textarea name="savingPlan" rows="3"></textarea>
+
+                            <button type="submit">Add</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!--Reminder Modal-->
+                <div id="reminderModal" class="modal hidden">
+                    <div class="modal-content">
+                        <span class="close" id="closeReminderModal">&times;</span>
+                        <h3>Add Reminder</h3>
+                        <form id="reminderForm">
+                            <label>Payment Due Date:</label>
+                            <input type="date" required>
+
+                            <label>Name:</label>
+                            <input type="text" required>
+
+                            <label>Category:</label>
+                            <select id="categorySelect" required>
+                                <!--reminder options can be independent of the categories for the on the expenses page and should be soley for reminders-->
+                                <option>🎥 Entertainment Subscription </option>
+                                <option>🏠 Rent</option>
+                                <option>💳 Credit Bill</option>
+                                <option>❓ Other</option>
+                                <!--maybe have a way for the user to add other categories-->
+                            </select>
+
+                            <label>Amount Due:</label>
+                            <input type="number" required>
+
+                            <label>Frequency:</label>
+                            <select>
+                                <option>One-Time</option>
+                                <option>Weekly</option>
+                                <option>Monthly</option>
+                                <option>Annual</option>
+                            </select>
+
+                            <button type="submit">Add</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!--Overview-->
+                <div class="overview">
+                    <h2>Recent Transactions</h2>
+                    <div class="overview-filter">
+                        <button class="overview-btn" id="overview-all">All</button>
+                        <button class="overview-btn" id="overview-income">Income</button>
+                        <button class="overview-btn" id="overview-expense">Expenses</button>
+                    </div>
+                    <div class="recent-transactions">
+                        <h4>Today</h4>
+                        <div class="transaction-card expense">
+                            🛒 Grocery - Trader Joe's <span id="date">2/25/24</span> <span class="money">-$45.37</span>
+                        </div>
+                        <div class="transaction-card expense">
+                            ⛽ Gas - Exxon <span id="date">2/25/24</span> <span class="money">-$30.34</span>
+                        </div>
+                        <h4>Yesterday</h4>
+                        <div class="transaction-card income">
+                            💰 Allowance - Family <span id="date">2/24/24</span> <span class="money">+$200.00</span>
+                        </div>
+                        <div class="transaction-card expense">
+                            🍔 Food - Marathon Deli <span id="date">2/24/24</span> <span class="money">-$12.47</span>
+                        </div>
+                        <h4>Last Week</h4>
+                        <div class="transaction-card income">
+                            💵 Paycheck - Work <span id="date">2/13/24</span> <span class="money">+$2500.00</span>
+                        </div>
+                    </div>
+                    <button class="overview-btn" id="more-transaction">Show More</button>
                 </div>
             </div>
-    
+
+            <!--Navigation Bar-->
             <div class="navbar">
                 <a href="index.html" class="active">
                     <img src="../icons/home.png" class="nav-icon">
                 </a>
                 <a href="expenses.html">
                     <img src="../icons/money.png" class="nav-icon">
-                </a>    
+                </a>
                 <a href="goals.html">
                     <img src="../icons/goal.png" class="nav-icon">
                 </a>
@@ -117,7 +284,8 @@
                     <img src="../icons/user.png" class="nav-icon">
                 </a>
             </div>
-            </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
