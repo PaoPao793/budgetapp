@@ -243,6 +243,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     btn.style.border = "none";
                     btn.style.background = "transparent";
                     btn.style.cursor = "pointer";
+                    btn.style.marginLeft = "auto";
                     btn.addEventListener("click", () => {
                         const categoryText = li.querySelector(".goal-card-text")?.textContent;
                         li.remove();
