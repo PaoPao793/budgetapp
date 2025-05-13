@@ -395,7 +395,6 @@ body {
 }
 
 #home-profile {
-    margin-top: 2rem;
     width: 5rem; /* Set width */
     height: 5rem; /* Set height */
     object-fit: cover; /* Ensures the image fills the area */
@@ -427,6 +426,7 @@ body {
     background-color: #dce5f8;
     padding: 1rem 1.5rem;
     margin: 1rem auto;
+    margin-top: 0.25rem;
     border-radius: 20px;
     width: 80%;
     text-align: center;
