@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
         const li = document.createElement('li');
         li.innerHTML = `
-            <div class="goal-card">
+            <div class="expense-card">
                 <span class="goal-card-text">${value}</span>
                 - $<span class="category-amount" data-category="${value}">0</span>
             </div>
@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // creates the food category; defaults to $200 in expenses
         const li1 = document.createElement('li');
         li1.innerHTML = `
-            <div class="goal-card">
+            <div class="expense-card">
                 <span class="goal-card-text">🍔 Food</span>
                 - $<span class="category-amount" data-category="🍔 Food">200</span>
             </div>
@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // creates the house category; defaults to $150 in expenses
         const li2 = document.createElement('li');
         li2.innerHTML = `
-            <div class="goal-card">
+            <div class="expense-card">
                 <span class="goal-card-text">🏠 House</span>
                 - $<span class="category-amount" data-category="🏠 House">150</span>
             </div>
@@ -183,7 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // creates the fun category; defaults to $150 in expenses
         const li3 = document.createElement('li');
         li3.innerHTML = `
-            <div class="goal-card">
+            <div class="expense-card">
                 <span class="goal-card-text">🎉 Fun</span>
                 - $<span class="category-amount" data-category="🎉 Fun">150</span>
             </div>
@@ -254,7 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             }
                         });
                     });
-                    li.querySelector(".goal-card")?.appendChild(btn);
+                    li.querySelector(".expense-card")?.appendChild(btn);
                 }
             } else if (btn) {
                 btn.remove();

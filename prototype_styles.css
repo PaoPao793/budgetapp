@@ -567,6 +567,15 @@ body {
     margin: 10px 0;
     font-size: 16px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.expense-card {
+    background-color: white;
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     display: flex;
     align-items: center;
 }
