@@ -367,6 +367,31 @@ window.addEventListener("click", (e) => {
     }
 });
 
+// handles keyboard
+const goalModal = document.querySelector("#goalModal"); 
+const editGoalModal = document.querySelector("#editGoalModal");
+const inputs = document.querySelectorAll("input, textarea");
+const keyboard = document.getElementById("keyboard");
 
+inputs.forEach(input => {
+    input.addEventListener("focus", () => {
+      keyboard.style.display = "block";
+      goalModal.style.paddingBottom = "270px"; // make room for keyboard height + spacing
+      editGoalModal.style.paddingBottom = "270px";
+    });
+  
+    input.addEventListener("blur", () => {
+      setTimeout(() => {
+        const activeElement = document.activeElement;
+        const stillFocused = Array.from(inputs).includes(activeElement);
+  
+        if (!stillFocused) {
+          keyboard.style.display = "none";
+          goalModal.style.paddingBottom = "0";
+          editGoalModal.style.paddingBottom = "0";
+        }
+      }, 100);
+    });
+  });
 
 

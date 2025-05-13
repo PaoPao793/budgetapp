@@ -880,6 +880,17 @@ body {
     margin-left: 0.25rem;
 }
 
+#keyboard {
+    display: none; /* Keeps keyboard initially hidden */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;         /* Fills the width of the .device */
+    height: 300px;        /* Adjust height as needed */
+    object-fit: fill;    /* Ensures image scales nicely */
+    z-index: 1000;
+}
+
 
 
 /*
