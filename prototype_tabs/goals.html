@@ -18,21 +18,24 @@
                     <div class="analytics-section">
                         <div class="analytics-header">
                             <h4>Overview</h4>
-                            <button id="editOverviewBtn">Edit</button>
+                            <button id="editOverviewBtn">Set</button>
                             <button id="saveOverviewBtn" class="hidden">Save</button>
                         </div>
 
                         <div id="budgetValues">
-                            <p>Weekly Budget: $<span id="weeklyBudget">200</span></p>
-                            <p>Weekly Saving: $<span id="weeklySaving">100</span></p>
+                            <p id="weeklyBudget">Weekly Budget: $500</p>
+                            <!--<p>Weekly Budget: $<span id="weeklyBudget">200</span></p>-->
+                            <!--<p>Weekly Saving: $<span id="weeklySaving">100</span></p>-->
+                            <p id="weeklySaving">Weekly Savings: $256.76</p>
+                            <p id="weeklySpent">Weekly Spendings: $243.24</p>
                         </div>
 
-                        <div id="editFields" class="hidden">
+                        <!--<div id="editFields" class="hidden">
                             <label>Weekly Budget:</label>
                             <input type="number" id="weeklyBudgetInput" value="200">
                             <label>Weekly Saving:</label>
-                            <input type="number" id="weeklySavingInput" value="100">                            
-                        </div>
+                            <input type="number" id="weeklySavingInput" value="100">                    
+                        </div>-->
 
                         <div id="customBudgets"></div>
 
@@ -110,6 +113,20 @@
                     <input type="number" id="categoryAmountInput" required>
             
                     <button type="submit">Add</button>
+                </form>
+                </div>
+            </div>
+
+            <!-- Edit Budget Modal -->
+            <div id="editBudgetModal" class="modal hidden">
+                <div class="modal-content">
+                <span id="closeBudgetModalBtn" class="close">&times;</span>
+                <h3>New Weekly Budget</h3>
+                <form id="budgetForm">
+                    <label>Weekly Budget:</label>
+                    <input type="number" id="budgetAmountInput" required>
+            
+                    <button type="submit">Save</button>
                 </form>
                 </div>
             </div>

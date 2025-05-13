@@ -11,19 +11,55 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // overview editing 
     const editBtn = document.getElementById("editOverviewBtn");
-    const saveBtn = document.getElementById("saveOverviewBtn");
-    const budgetValues = document.getElementById("budgetValues");
-    const editFields = document.getElementById("editFields");
+    // const saveBtn = document.getElementById("saveOverviewBtn");
+    // const budgetValues = document.getElementById("budgetValues");
+    // const editFields = document.getElementById("editFields");
+    const budgetModal = document.getElementById("editBudgetModal");
+    const closeBudgetBtn = document.getElementById("closeBudgetModalBtn");
+    const budgetForm = document.getElementById("budgetForm");
+    const budgetValue = document.getElementById("weeklyBudget");
+    const budgetInput = document.getElementById("budgetAmountInput");
+    const savingValue = document.getElementById("weeklySaving");
+    const spentValue = document.getElementById("weeklySpent");
 
     // adding new category to the overview 
-    const categoryModal = document.getElementById("addCategoryModal");
-    const openCategoryBtn = document.getElementById("addCategoryBtn");
+    // const categoryModal = document.getElementById("addCategoryModal");
+    // const openCategoryBtn = document.getElementById("addCategoryBtn");
     const closeCategoryBtn = document.getElementById("closeCategoryModalBtn");
-    const categoryForm = document.getElementById("categoryForm");
+    // const categoryForm = document.getElementById("categoryForm");
 
+    // Open the budget modal
+    editBtn.addEventListener("click", () => {
+        budgetModal.style.display = "flex";
+        budgetInput.focus();
+    });
+
+    closeBudgetBtn.addEventListener("click", () => {
+        budgetModal.style.display = "none";
+    });
+
+    // Handle form submission
+    budgetForm.addEventListener("submit", (e) => {
+        e.preventDefault(); // prevent page reload
+  
+        const value = parseFloat(budgetInput.value);
+        newSaving = 256.76; // hardcoded
+        amountSpent = value - 256.76;
+        if (!isNaN(value) && value >= 0) {
+            budgetValue.textContent = `Weekly Budget: $${value}`;
+            savingValue.textContent = `Weekly Savings: $${newSaving}`;
+            spentValue.textContent = `Weekly Spendings: $${amountSpent}`;
+        }
+        // Hide modal and reset
+        budgetModal.style.display = "none";
+        budgetInput.value = "";
+    });
+
+    /*
     openCategoryBtn.addEventListener("click", () => {
         categoryModal.classList.remove("hidden");
     });
+    */
 
     closeCategoryBtn.addEventListener("click", () => {
         categoryModal.classList.add("hidden");
@@ -35,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    /*
     // adding new goal 
     categoryForm.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -68,14 +105,15 @@ document.addEventListener("DOMContentLoaded", () => {
         categoryForm.reset();
         categoryModal.classList.add("hidden");
     });
-
+    */
 
     // logic for clicking the edit button and changing amounts 
+    /*
     saveBtn.addEventListener("click", () => {
         editBtn.classList.remove("hidden");
         saveBtn.classList.add("hidden");
         const newBudget = document.getElementById("weeklyBudgetInput").value;
-        const newSaving = document.getElementById("weeklySavingInput").value;
+        //const newSaving = document.getElementById("weeklySavingInput").value;
 
         document.getElementById("weeklyBudget").textContent = newBudget;
         document.getElementById("weeklySaving").textContent = newSaving;
@@ -109,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
         editBtn.classList.add("hidden");
         saveBtn.classList.remove("hidden");
     });
-
+    */
 
     // the collapsible things for the goals 
     openBtn.addEventListener("click", () => {

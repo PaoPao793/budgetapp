@@ -122,6 +122,10 @@
     background-color: #2196F3;
 }
 
+#addCategoryBtn {
+    display: none;
+}
+
 
 
 
