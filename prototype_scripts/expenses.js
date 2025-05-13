@@ -8,13 +8,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeDepositBtn = document.getElementById("closeDepositModal");
 
     // Amber addition for phase 2.1
-    const editCategoriesBtn = document.getElementById("editCategoriesBtn"); // button to open modal for adding / removing categories
     const categoriesModal = document.getElementById("editCategoriesModal");
     const closeCategoriesBtn = document.getElementById("closeCategoriesModel");
     const categoryAmounts = {}; // for tracking $$ within each category
 
     initializeCategories();
     //
+
+    let isEditing = false;
+
+    const editBtn = document.getElementById("editCategoriesBtn");
+    const addCategoryBtn = document.getElementById("addCategoryBtn");
+    const categoryControls = document.getElementById("category-controls");
+    const categoryList = document.getElementById("goal-categories-list");
+    const categorySelect = document.getElementById("categorySelect");
+
 
     addExpenseBtn.addEventListener("click", () => {
         expenseModal.classList.remove("hidden");
@@ -33,9 +41,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Amber addition for phase 2.1
-    editCategoriesBtn.addEventListener("click", () => {
+    /*editCategoriesBtn.addEventListener("click", () => {
+        categoriesModal.classList.remove("hidden");
+    });*/
+
+    addCategoryBtn.addEventListener("click", () => {
         categoriesModal.classList.remove("hidden");
     });
+    
+    
+
+    document.getElementById("categoryForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const input = document.getElementById('newCategoryInput');
+        addCategory(input.value.trim());
+        categoriesModal.classList.add("hidden"); // instead of expenseModal
+        e.target.reset();
+    });
+    
 
     closeCategoriesBtn.addEventListener("click", () => {
         categoriesModal.classList.add("hidden");
@@ -82,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    function addCategory(value) {
+    /*function addCategory(value) {
         const list = document.getElementById("goal-categories-list");
         const categorySelect = document.getElementById("categorySelect");
 
@@ -107,6 +130,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
             updateCategoryDisplay();
         }
+    }*/
+
+    function addCategory(value) {
+        if (!value) return;
+    
+        const li = document.createElement('li');
+        li.innerHTML = `
+            <div class="goal-card">
+                <span class="goal-card-text">${value}</span>
+                - $<span class="category-amount" data-category="${value}">0</span>
+            </div>
+        `;
+        categoryList.appendChild(li);
+    
+        const option = document.createElement('option');
+        option.value = value;
+        option.textContent = value;
+        categorySelect.appendChild(option);
     }
 
     function initializeCategories() {
@@ -168,7 +209,62 @@ document.addEventListener("DOMContentLoaded", () => {
         option3.textContent = "🎉 Fun";
         categorySelect.appendChild(option3);
     }
-    //
+    
+    function showMessage(messageText, duration = 5000) {
+        const messageBox = document.getElementById("messageBox");
+        messageBox.innerText = messageText;
+        messageBox.classList.remove("hidden");
+    
+        // Auto-hide after the given duration
+        setTimeout(() => {
+            messageBox.classList.add("hidden");
+        }, duration);
+    }
+
+    editBtn.addEventListener("click", () => {
+        isEditing = !isEditing;
+    
+        // Update button text
+        editBtn.textContent = isEditing ? "Save" : "Edit";
+    
+        // Toggle the "Add Category" button visibility
+        categoryControls.style.display = isEditing ? "flex" : "none";
+    
+        // Toggle delete buttons
+        document.querySelectorAll('#goal-categories-list li').forEach(li => {
+            let btn = li.querySelector(".delete-category-btn");
+    
+            if (isEditing) {
+                if (!btn) {
+                    btn = document.createElement("button");
+                    btn.textContent = "❌";
+                    btn.className = "delete-category-btn";
+                    btn.style.marginLeft = "1rem";
+                    btn.style.border = "none";
+                    btn.style.background = "transparent";
+                    btn.style.cursor = "pointer";
+                    btn.addEventListener("click", () => {
+                        const categoryText = li.querySelector(".goal-card-text")?.textContent;
+                        li.remove();
+                        // Also remove from dropdown
+                        Array.from(categorySelect.options).forEach(option => {
+                            if (option.textContent === categoryText) {
+                                option.remove();
+                            }
+                        });
+                    });
+                    li.querySelector(".goal-card")?.appendChild(btn);
+                }
+            } else if (btn) {
+                btn.remove();
+            }
+        });
+    });
+    
+    
+    
+    
+    
 
     window.addEventListener("click", (e) => {
         if (e.target === expenseModal) expenseModal.classList.add("hidden");
@@ -181,31 +277,57 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("expenseForm").addEventListener("submit", (e) => {
         e.preventDefault();
         const category = document.getElementById("categorySelect").value; // gets the selected category
-
-
-        alert("Expense added!");
+        //alert("Expense added!");
+        showMessage("Expense added! Go to Home to see it");
         expenseModal.classList.add("hidden");
         e.target.reset();
     });
 
     document.getElementById("depositForm").addEventListener("submit", (e) => {
         e.preventDefault();
-        alert("Deposit added!");
+        showMessage("Deposit added! Go to home to see it");
         depositModal.classList.add("hidden");
         e.target.reset();
     });
 
-    document.getElementById("categoryForm").addEventListener("submit", (e) => {
-        e.preventDefault();
-        const input = document.getElementById('newCategoryInput');
-        addCategory(input.value.trim());
-        expenseModal.classList.add("hidden");
-        e.target.reset();
-    });
+    
 
     // edit this to add functionality for toggle bw week and month in expenses
     document.getElementById("toggleViewBtn").addEventListener("click", () => {
-        alert("Switched between week and month view!");
+        //alert("Switched between week and month view!");
+        showMessage("Switched between week and month view!");
     });
     
 });
+
+
+document.querySelectorAll('#categoryForm [required]').forEach(input => {
+    const label = input.previousElementSibling;
+    if (label && !label.querySelector('.required')) {
+        const star = document.createElement('span');
+        star.className = 'required';
+        star.textContent = '*';
+        label.appendChild(star);
+    }
+});
+
+document.querySelectorAll('#expenseForm [required]').forEach(input => {
+    const label = input.previousElementSibling;
+    if (label && !label.querySelector('.required')) {
+        const star = document.createElement('span');
+        star.className = 'required';
+        star.textContent = '*';
+        label.appendChild(star);
+    }
+});
+
+document.querySelectorAll('#depositForm [required]').forEach(input => {
+    const label = input.previousElementSibling;
+    if (label && !label.querySelector('.required')) {
+        const star = document.createElement('span');
+        star.className = 'required';
+        star.textContent = '*';
+        label.appendChild(star);
+    }
+});
+

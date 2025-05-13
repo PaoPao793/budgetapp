@@ -67,10 +67,11 @@
                 </div>
 
                 <!--Balance-->
-                <div class="checking">
-                    <p id="balance-text" class="money">$300.50</p>
-                    <p>Available Weekly Balance</p>
+                <div class="balance-display">
+                    <div class="balance-label">Available Weekly Balance:</div>
+                    <div id="balance-amount" class="money">$300.50</div>
                 </div>
+
 
                 <!--Quick Actions Bar-->
                 <div class="quick-actions">
@@ -237,6 +238,7 @@
                 <!--Overview-->
                 <div class="overview">
                     <h2>Recent Transactions</h2>
+                    <div id="messageBox" class="message-box hidden"></div>
                     <div class="overview-filter">
                         <button class="overview-btn" id="overview-all">All</button>
                         <button class="overview-btn" id="overview-income">Income</button>
@@ -244,12 +246,15 @@
                     </div>
                     <div class="recent-transactions">
                         <h4>Today</h4>
-                        <div class="transaction-card expense">
-                            🛒 Grocery - Trader Joe's <span id="date">2/25/24</span> <span class="money">-$45.37</span>
+                        <div id="today-transactions">
+                            <div class="transaction-card expense">
+                                🛒 Grocery - Trader Joe's <span id="date">2/25/24</span> <span class="money">-$45.37</span>
+                            </div>
+                            <div class="transaction-card expense">
+                                ⛽ Gas - Exxon <span id="date">2/25/24</span> <span class="money">-$30.34</span>
+                            </div>
                         </div>
-                        <div class="transaction-card expense">
-                            ⛽ Gas - Exxon <span id="date">2/25/24</span> <span class="money">-$30.34</span>
-                        </div>
+                        
                         <h4>Yesterday</h4>
                         <div class="transaction-card income">
                             💰 Allowance - Family <span id="date">2/24/24</span> <span class="money">+$200.00</span>

@@ -423,20 +423,32 @@ body {
     background-color: #1976D2;
 }
 
-.checking {
-    border-radius: 25px;
-    text-align: left;
-    padding-left: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin: 15px;
+.balance-display {
     background-color: #dce5f8;
+    padding: 1rem 1.5rem;
+    margin: 1rem auto;
+    border-radius: 20px;
+    width: 80%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.3rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-#balance-text {
-    font-size: 2rem;
-    font-weight: bold;
+.balance-label {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #333;
 }
+
+#balance-amount {
+    font-size: 2.25rem;
+    font-weight: bold;
+    color: black;
+}
+
 
 .quick-actions {
     display: flex;
@@ -452,8 +464,8 @@ body {
 }
 
 .qa-btn {
-    background-color: #2196F3;
-    border-color: #e296e5;
+    background-color: #1976D2;
+    border-color: #d51384;
     border-width: 5px;
     border-radius: 16px;
     padding: 20px;
@@ -466,7 +478,8 @@ body {
 }
 
 .qa-btn:hover {
-    background-color: #1976D2;
+    background-color: #2196F3;
+    /* darker color: 2196F3 */
 }
 
 .qa-icon {
@@ -497,16 +510,21 @@ body {
 }
 
 .overview-btn {
-    background-color: #ecd4ed;
+    background-color: #a514aa;
     border: none;
     border-radius: 5px;
     text-align: center;
-    color: rgb(66, 66, 66);
+    color: white;
     padding: 8px;
 }
 
 .overview-btn:hover {
-    background-color: #ecdeec;
+    background-color: #7a627a;
+}
+
+.overview-btn.active {
+    background-color: #d51384;
+    color: white;
 }
 
 .transaction-card {
@@ -523,11 +541,6 @@ body {
 
 .transaction-card span {
     font-weight: bold;
-}
-
-.overview-btn.active {
-    background-color: rgb(219, 80, 161);
-    color: white;
 }
 
 #more-transaction {
@@ -761,6 +774,23 @@ body {
     margin-left: 10px;
 }
 
+/* alert msg */
+.message-box {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 0.75rem 1rem;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    margin: 1rem 0;
+    text-align: center;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+}
+
+.message-box.hidden {
+    display: none;
+}
+
 
 
 
@@ -834,6 +864,10 @@ body {
     cursor: pointer;
 }
 
+.required {
+    color: red;
+    margin-left: 0.25rem;
+}
 
 
 

@@ -118,6 +118,17 @@ document.addEventListener("DOMContentLoaded", () => {
         option3.textContent = "🎉 Fun";
     }
 
+    function showMessage(messageText, duration = 5000) {
+        const messageBox = document.getElementById("messageBox");
+        messageBox.innerText = messageText;
+        messageBox.classList.remove("hidden");
+    
+        // Auto-hide after the given duration
+        setTimeout(() => {
+            messageBox.classList.add("hidden");
+        }, duration);
+    }
+
     window.addEventListener("click", (e) => {
         if (e.target === expenseModal) expenseModal.classList.add("hidden");
         if (e.target === depositModal) depositModal.classList.add("hidden");
@@ -127,27 +138,45 @@ document.addEventListener("DOMContentLoaded", () => {
     // Optional: handle form submissions (incomplete)
     document.getElementById("expenseForm").addEventListener("submit", (e) => {
         e.preventDefault();
-        const category = document.getElementById("categorySelect").value; // gets the selected category
+    
+        const name = e.target.querySelector('input[type="text"]').value;
+        const amount = parseFloat(e.target.querySelector('input[type="number"]').value).toFixed(2);
 
+        const expenseCard = document.createElement("div");
+        expenseCard.className = "transaction-card expense";
+        expenseCard.innerHTML = `🧾 ${name} <span id="date">5/13/25</span> <span class="money">-$${amount}</span>`;
 
-        alert("Expense added!");
+        document.getElementById("today-transactions").appendChild(expenseCard);
+
+        showMessage("Expense added!");
         expenseModal.classList.add("hidden");
         e.target.reset();
     });
 
     document.getElementById("depositForm").addEventListener("submit", (e) => {
         e.preventDefault();
-        alert("Deposit added!");
+    
+        const name = e.target.querySelector('input[type="text"]').value;
+        const amount = parseFloat(e.target.querySelector('input[type="number"]').value).toFixed(2);
+    
+        const depositCard = document.createElement("div");
+        depositCard.className = "transaction-card income";
+        depositCard.innerHTML = `💵 ${name} <span id="date">5/13/25</span> <span class="money">+$${amount}</span>`;
+    
+        document.getElementById("today-transactions").appendChild(depositCard);
+    
+        showMessage("Deposit added!");
         depositModal.classList.add("hidden");
         e.target.reset();
     });
+    
 
     document.getElementById("reminderForm").addEventListener("submit", (e) => {
         e.preventDefault();
         const reminderCategory = document.getElementById("categorySelect").value; // gets the selected category
 
-
-        alert("Reminder added!");
+        showMessage("Reminder added!");
+        //alert("Reminder added!");
         reminderModal.classList.add("hidden");
         e.target.reset();
     });
@@ -178,7 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const plan = goalForm.savingPlan.value.trim();
 
         if (!goalName || !amount || !dueDate) {
-            alert("Please fill in all required fields.");
+            alert("Please fill in all required fields."); // still needs to be changed!! 
             return;
         }
 
@@ -297,3 +326,44 @@ window.addEventListener('click', (e) => {
     modal.style.display = 'none';
   }
 });
+
+document.querySelectorAll('#expenseForm [required]').forEach(input => {
+    const label = input.previousElementSibling;
+    if (label && !label.querySelector('.required')) {
+        const star = document.createElement('span');
+        star.className = 'required';
+        star.textContent = '*';
+        label.appendChild(star);
+    }
+});
+
+document.querySelectorAll('#depositForm [required]').forEach(input => {
+    const label = input.previousElementSibling;
+    if (label && !label.querySelector('.required')) {
+        const star = document.createElement('span');
+        star.className = 'required';
+        star.textContent = '*';
+        label.appendChild(star);
+    }
+});
+
+document.querySelectorAll('#goalForm [required]').forEach(input => {
+    const label = input.previousElementSibling;
+    if (label && !label.querySelector('.required')) {
+        const star = document.createElement('span');
+        star.className = 'required';
+        star.textContent = '*';
+        label.appendChild(star);
+    }
+});
+
+document.querySelectorAll('#reminderForm [required]').forEach(input => {
+    const label = input.previousElementSibling;
+    if (label && !label.querySelector('.required')) {
+        const star = document.createElement('span');
+        star.className = 'required';
+        star.textContent = '*';
+        label.appendChild(star);
+    }
+});
+
