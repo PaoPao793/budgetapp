@@ -53,25 +53,42 @@
         
                         <div id="goalsList">
                             <div class="goal-card collapsible">
-                                <div class="goal-summary"><Strong>Vacation</Strong> - $300 / $1000</div>
+                                
+                                <div class="goal-summary">
+                                    <span class="goal-name"><strong>Vacation</strong></span>
+                                    <span class="goal-progress">$300 / $1000</span>
+                                    <span class="chevron toggle-collapse">▼</span>
+                                    <button class="quick-edit-btn">✎</button>
+                                </div>
                                 <div class="goal-details hidden">
                                   <p><strong>Target:</strong> $1000</p>
+                                  <p><strong>Progress:</strong> $300</p>
                                   <p><strong>Due:</strong> 2025-06-01</p>
                                   <p><strong>Type:</strong> Long-Term</p>
                                   <p><strong>Plan:</strong><br>Save $100 every 2 weeks using direct deposit.</p>
+                                  <button class="edit-goal-btn">Edit</button>
                                 </div>
                             </div>
                               
                             <div class="goal-card collapsible">
+                                
                                 <div class="goal-summary">
-                                    <Strong>Apartment</Strong> - $100 / $900
+                                    <span class="goal-name"><strong>Apartment</strong></span>
+                                    <span class="goal-progress">$100 / $900</span>
+                                    <span class="chevron toggle-collapse">▼</span>
+                                    <button class="quick-edit-btn">✎</button>
                                 </div>
                                 <div class="goal-details hidden">
                                     <p><strong>Target:</strong> $900</p>
+                                    <p><strong>Progress:</strong> $100</p>
                                     <p><strong>Due:</strong> 2032-09-01</p>
                                     <p><strong>Type:</strong> Long-Term</p>
-                                    <p><strong>Plan:</strong><br>Save $100 every 2 days using</p>
+                                    <p><strong>Plan:</strong><br>Save $100 every 2 weeks using direct deposit.</p>
+                                    <button class="edit-goal-btn">Edit</button>
                                 </div>
+                                
+
+                                
                             </div>
                         </div>
                         
@@ -111,6 +128,9 @@
                         <label>How much?:</label>
                         <input type="number" name="goalAmount" required>
 
+                        <label>Initial Progress?:</label>
+                        <input type="number" name="goalProgress" value="0" min="0" required>
+
                         <label>By when?:</label>
                         <input type="date" name="goalDate" required>
 
@@ -127,6 +147,53 @@
                     </form>
                 </div>
             </div>
+
+            <!-- Editing Goal Modal -->
+            <div id="editGoalModal" class="modal hidden">
+                <div class="modal-content">
+                    <span id="closeEditGoalModal" class="close">&times;</span>
+                    <h3>Edit Goal</h3>
+                    <form id="editGoalForm">
+                    <label>Goal:</label>
+                    <input type="text" name="editGoalName" required>
+                
+                    <label>How much?:</label>
+                    <input type="number" name="editGoalAmount" required>
+                
+                    <label>Progress:</label>
+                    <input type="number" name="editGoalProgress" required>
+                
+                    <label>Due Date:</label>
+                    <input type="date" name="editGoalDate" required>
+                
+                    <label>Type:</label>
+                    <select name="editGoalType">
+                        <option>Short-Term</option>
+                        <option>Long-Term</option>
+                    </select>
+                
+                    <label>Plan:</label>
+                    <textarea name="editGoalPlan" rows="3"></textarea>
+                
+                    <button type="submit">Save</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Quick Progress Modal -->
+            <div id="progressModal" class="modal hidden">
+                <div class="modal-content">
+                    <span id="closeProgressModal" class="close">&times;</span>
+                    <h3>Update Progress</h3>
+                    <form id="progressForm">
+                    <label>New Progress:</label>
+                    <input type="number" id="newProgressInput" min="0">
+                    <button type="submit">Update</button>
+                    </form>
+                </div>
+            </div>
+              
+              
 
 
     

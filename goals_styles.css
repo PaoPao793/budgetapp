@@ -13,10 +13,6 @@
     border-style: solid;
 }
 
-.goal-summary {
-    font-weight: regular;
-}
-
 .goal-details {
     font-size: 14px;
     padding-top: 8px;
@@ -26,6 +22,52 @@
 .goal-details.hidden {
     display: none;
 }
+
+.goal-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    font-weight: regular;
+}
+
+
+.chevron {
+    transition: transform 0.3s ease;
+    margin-right: 10px;
+    font-size: 16px;
+    flex: 0;
+}
+
+/* Rotate the chevron */
+.goal-summary.expanded .chevron {
+    transform: rotate(180deg);
+}
+
+
+.goal-summary span {
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.goal-name {
+    flex: 1;
+    font-weight: bold;
+    
+}
+
+.goal-progress {
+    flex: 1;
+    text-align: center;
+    color: #333;
+}
+
+.required {
+    color: red;
+    font-weight: bold;
+    margin-left: 4px;
+}
+
 
 /* Editable Overview Section */
 #editFields {
@@ -55,5 +97,31 @@
 #saveOverviewBtn:hover {
     background-color: #4dcf9b;
 }
+
+.quick-edit-btn,
+.edit-goal-btn {
+    background-color: #2196F3;
+    border: none;
+    border-radius: 6px;
+    padding: 4px 8px;
+    margin-top: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    color: white;
+}
+
+.quick-edit-btn {
+    float: right;
+    margin-right: 10px;
+    color: white;
+}
+
+.quick-edit-btn:hover,
+.edit-goal-btn:hover {
+    background-color: #2196F3;
+}
+
+
+
 
 

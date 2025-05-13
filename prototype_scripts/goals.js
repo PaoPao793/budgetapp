@@ -1,3 +1,6 @@
+let currentCardBeingEdited = null;
+let currentProgressSpan = null;
+
 document.addEventListener("DOMContentLoaded", () => {
     // goal modal
     const modal = document.getElementById("goalModal");
@@ -130,6 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const goalName = goalForm.goalName.value.trim();
         const amount = goalForm.goalAmount.value.trim();
+        const progress = goalForm.goalProgress.value.trim() || "0";
         const dueDate = goalForm.goalDate.value.trim();
         const type = goalForm.goalType.value;
         const plan = goalForm.savingPlan.value.trim();
@@ -144,19 +148,26 @@ document.addEventListener("DOMContentLoaded", () => {
         goalCard.className = "goal-card collapsible";
         goalCard.innerHTML = `
             <div class="goal-summary">
-                <strong>${goalName}</strong> - $0 / $${amount}
+                <span class="goal-name"><strong>${goalName}</strong></span>
+                <span class="goal-progress">$${progress} / $${amount}</span>
+                <span class="chevron toggle-collapse">▼</span>
+                <button class="quick-edit-btn">✎</button>
             </div>
             <div class="goal-details hidden">
                 <p><strong>Target:</strong> $${amount}</p>
+                <p><strong>Progress:</strong> $${progress}</p>
                 <p><strong>Due:</strong> ${dueDate}</p>
                 <p><strong>Type:</strong> ${type}</p>
                 <p><strong>Plan:</strong><br>${plan.replace(/\n/g, "<br>")}</p>
+                <button class="edit-goal-btn">Edit</button>
             </div>
         `;
 
         goalCard.addEventListener("click", () => {
             const details = goalCard.querySelector(".goal-details");
+            const summary = goalCard.querySelector(".goal-summary");
             details.classList.toggle("hidden");
+            summary.classList.toggle("expanded");
         });
 
         goalsSection.appendChild(goalCard);
@@ -166,14 +177,69 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Attach expand/collapse logic to any pre-existing goal cards -> rm if we get rid of default vals 
-    document.querySelectorAll('.goal-card.collapsible').forEach(card => {
-        card.addEventListener('click', () => {
+    document.querySelectorAll('.goal-card .toggle-collapse').forEach(chevron => {
+        chevron.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const card = chevron.closest('.goal-card');
             const details = card.querySelector('.goal-details');
-            if (details) {
-                details.classList.toggle('hidden');
-            }
+            const summary = card.querySelector('.goal-summary');
+    
+            details.classList.toggle('hidden');
+            summary.classList.toggle('expanded');
         });
     });
+    
+
+    goalsSection.addEventListener("click", (e) => {
+        const target = e.target;
+
+        // Quick progress
+        if (target.classList.contains("quick-edit-btn")) {
+            e.stopPropagation();
+            currentProgressSpan = target.closest(".goal-card").querySelector(".goal-progress");
+            const current = parseInt(currentProgressSpan.textContent.split("/")[0].replace(/[$\s]/g, ""));
+            document.getElementById("newProgressInput").value = current;
+            document.getElementById("progressModal").classList.remove("hidden");
+            return;
+        }
+    
+        // Full edit
+        if (target.classList.contains("edit-goal-btn")) {
+            e.stopPropagation();
+            const card = target.closest(".goal-card");
+            currentCardBeingEdited = card;
+    
+            // pre-fill inputs from card content
+            const name = card.querySelector(".goal-name").textContent.trim();
+            const [progress, amount] = card.querySelector(".goal-progress").textContent.replace(/\$/g, "").split("/").map(x => x.trim());
+            const due = card.querySelector(".goal-details").innerHTML.match(/<strong>Due:<\/strong>\s*(.*?)<\/p>/)?.[1] ?? "";
+            const type = card.querySelector(".goal-details").innerHTML.match(/<strong>Type:<\/strong>\s*(.*?)<\/p>/)?.[1] ?? "";
+            const plan = card.querySelector(".goal-details").innerHTML.match(/<strong>Plan:<\/strong><br>([\s\S]*?)<\/p>/)?.[1]?.replace(/<br>/g, "\n") ?? "";
+    
+            const editForm = document.getElementById("editGoalForm");
+            editForm.editGoalName.value = name;
+            editForm.editGoalAmount.value = amount;
+            editForm.editGoalProgress.value = progress;
+            editForm.editGoalDate.value = due;
+            editForm.editGoalType.value = type;
+            editForm.editGoalPlan.value = plan;
+    
+            document.getElementById("editGoalModal").classList.remove("hidden");
+            return;
+        }
+
+        // Toggle only when clicking on chevron
+        if (target.classList.contains("toggle-collapse")) {
+            e.stopPropagation(); 
+            const card = target.closest(".goal-card");
+            const details = card.querySelector(".goal-details");
+            const summary = card.querySelector(".goal-summary");
+
+            details.classList.toggle("hidden");
+            summary.classList.toggle("expanded");
+        }
+    });
+    
 
 });
 
@@ -202,7 +268,7 @@ function markActiveFilter(activeId) {
         const btn = document.getElementById(id);
         if (btn) {
             btn.style.backgroundColor = (id === activeId) ? "rgba(17, 55, 138)" : "#2196F3";
-            btn.style.color = (id === activeId) ? "white" : "black";
+            //btn.style.color = (id === activeId) ? "white" : "black";
         }
     });
 }
@@ -232,3 +298,75 @@ function sortGoals(method) {
     container.innerHTML = "";
     sorted.forEach(card => container.appendChild(card));
 }
+
+document.getElementById("progressForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const newVal = document.getElementById("newProgressInput").value;
+    if (currentProgressSpan) {
+        const total = currentProgressSpan.textContent.split("/")[1];
+        currentProgressSpan.textContent = `$${newVal} / ${total}`;
+    }
+    document.getElementById("progressModal").classList.add("hidden");
+});
+
+document.getElementById("editGoalForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const name = form.editGoalName.value.trim();
+    const amount = form.editGoalAmount.value.trim();
+    const progress = form.editGoalProgress.value.trim();
+    const date = form.editGoalDate.value;
+    const type = form.editGoalType.value;
+    const plan = form.editGoalPlan.value;
+
+    if (currentCardBeingEdited) {
+        currentCardBeingEdited.querySelector(".goal-name strong").textContent = name;
+        currentCardBeingEdited.querySelector(".goal-progress").textContent = `$${progress} / $${amount}`;
+        const details = currentCardBeingEdited.querySelector(".goal-details");
+        details.innerHTML = `
+            <p><strong>Target:</strong> $${amount}</p>
+            <p><strong>Progress:</strong> $${progress}</p>
+            <p><strong>Due:</strong> ${date}</p>
+            <p><strong>Type:</strong> ${type}</p>
+            <p><strong>Plan:</strong><br>${plan.replace(/\n/g, "<br>")}</p>
+            <button class="edit-goal-btn">Edit Goal</button>
+        `;
+    }
+
+    document.getElementById("editGoalModal").classList.add("hidden");
+});
+
+
+document.querySelectorAll('#goalForm [required]').forEach(input => {
+    const label = input.previousElementSibling;
+    if (label && !label.querySelector('.required')) {
+        const star = document.createElement('span');
+        star.className = 'required';
+        star.textContent = '*';
+        label.appendChild(star);
+    }
+});
+
+// Close the edit goal modal when 'X' is clicked
+document.getElementById("closeEditGoalModal").addEventListener("click", () => {
+    document.getElementById("editGoalModal").classList.add("hidden");
+});
+
+// Close the progress modal when 'X' is clicked
+document.getElementById("closeProgressModal").addEventListener("click", () => {
+    document.getElementById("progressModal").classList.add("hidden");
+});
+
+window.addEventListener("click", (e) => {
+    if (e.target.id === "editGoalModal") {
+        e.target.classList.add("hidden");
+    }
+    if (e.target.id === "progressModal") {
+        e.target.classList.add("hidden");
+    }
+});
+
+
+
+
