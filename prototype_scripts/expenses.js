@@ -332,3 +332,29 @@ document.querySelectorAll('#depositForm [required]').forEach(input => {
     }
 });
 
+// handles keyboard
+const expenseModal = document.querySelector("#expenseModal"); 
+const depositModal = document.querySelector("#depositModal");
+const inputs = document.querySelectorAll("input, textarea");
+const keyboard = document.getElementById("keyboard");
+
+inputs.forEach(input => {
+    input.addEventListener("focus", () => {
+      keyboard.style.display = "block";
+      expenseModal.style.paddingBottom = "270px"; // make room for keyboard height + spacing
+      depositModal.style.paddingBottom = "270px";
+    });
+  
+    input.addEventListener("blur", () => {
+      setTimeout(() => {
+        const activeElement = document.activeElement;
+        const stillFocused = Array.from(inputs).includes(activeElement);
+  
+        if (!stillFocused) {
+          keyboard.style.display = "none";
+          expenseModal.style.paddingBottom = "0";
+          depositModal.style.paddingBottom = "0";
+        }
+      }, 100);
+    });
+  });
