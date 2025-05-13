@@ -367,3 +367,35 @@ document.querySelectorAll('#reminderForm [required]').forEach(input => {
     }
 });
 
+// handles keyboard
+const goalModal = document.querySelector("#goalModal");
+const expenseModal = document.querySelector("#expenseModal"); 
+const depositModal = document.querySelector("#depositModal");
+const reminderModal = document.querySelector("#reminderModal");
+const inputs = document.querySelectorAll("input, textarea");
+const keyboard = document.getElementById("keyboard");
+
+inputs.forEach(input => {
+    input.addEventListener("focus", () => {
+      keyboard.style.display = "block";
+      goalModal.style.paddingBottom = "270px";
+      expenseModal.style.paddingBottom = "270px"; // make room for keyboard height + spacing
+      depositModal.style.paddingBottom = "270px";
+      reminderModal.style.paddingBottom = "270px";
+    });
+  
+    input.addEventListener("blur", () => {
+      setTimeout(() => {
+        const activeElement = document.activeElement;
+        const stillFocused = Array.from(inputs).includes(activeElement);
+  
+        if (!stillFocused) {
+          keyboard.style.display = "none";
+          goalModal.style.paddingBottom = "0";
+          expenseModal.style.paddingBottom = "0";
+          depositModal.style.paddingBottom = "0";
+          reminderModal.style.paddingBottom = "0";
+        }
+      }, 100);
+    });
+  });
