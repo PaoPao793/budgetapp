@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const value = parseFloat(budgetInput.value);
         newSaving = 256.76; // hardcoded
         amountSpent = value - 256.76;
+        amountSpent = amountSpent.toFixed(2); //fix rounding probem
         if (!isNaN(value) && value >= 0) {
             budgetValue.textContent = `Weekly Budget: $${value}`;
             savingValue.textContent = `Weekly Savings: $${newSaving}`;
