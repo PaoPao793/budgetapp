@@ -31,6 +31,8 @@ While this is a prototype, it is thoughtfully designed to look and behave realis
 - **User customization and preferences**
 
 ### Project in use
-[See video here](https://youtu.be/kri25h_bp3M)
+[See video here](https://youtu.be/q1Q7v_fVUE4)
+
+
 
 **Note:** This project is scoped for prototyping only. It is a self-contained application that does not include back-end integration, AI features, or real-time financial syncing.
